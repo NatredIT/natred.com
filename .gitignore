@@ -33,3 +33,19 @@ yarn-error.log*
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Screenshots
+*.png
+*.jpg
+*.jpeg
+
+# Internal/working documents
+Natred-*.html
+NatredLandingPage.html
+*.pdf
+
+# Claude Code settings
+.claude/
+
+# Windows
+desktop.ini
