@@ -1,0 +1,366 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<PageLayout
+  title="Contact Us"
+  description="Get in touch with Natred for IT support, Microsoft 365 services, or any other IT needs. Based in Johannesburg, serving businesses across South Africa."
+>
+  <HeroSection
+    title="Get In Touch"
+    subtitle="Let's talk about your IT needs"
+    description="Whether you need ongoing IT support, a one-off project, or just want to discuss your options—we're here to help. No hard sell, just honest conversation."
+    compact={true}
+    showCta={false}
+  />
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Contact Form -->
+        <div class="contact-form-section animate-on-scroll fade-up">
+          <h2>Send Us a Message</h2>
+          <p class="form-intro">Fill out the form below and we'll get back to you within 24 hours.</p>
+
+          <form class="contact-form" id="contact-page-form">
+            <div class="form-group">
+              <label for="name">Name <span class="required">*</span></label>
+              <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email" placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" autocomplete="organization" placeholder="Your company (optional)">
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="Your phone number (optional)">
+            </div>
+
+            <div class="form-group full-width">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about your IT needs..."></textarea>
+            </div>
+
+            <div class="form-group full-width turnstile-container">
+              <div class="cf-turnstile" data-sitekey="0x4AAAAAACXuVntH3ohsUMHG" data-theme="dark" data-callback="onTurnstileSuccess" data-expired-callback="onTurnstileExpired"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="contact-submit-btn" disabled>Send Message</button>
+            <div class="form-feedback" id="form-feedback" hidden>
+              <svg class="feedback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <span>Opening your email client...</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info-section">
+          <div class="response-info animate-on-scroll fade-left">
+            <h4>What to Expect</h4>
+            <ul>
+              <li>Response within 24 hours</li>
+              <li>Free initial consultation</li>
+              <li>No obligation assessment</li>
+              <li>Transparent pricing discussion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-form-section h2 {
+    margin-bottom: 10px;
+  }
+
+  .form-intro {
+    color: var(--light-gray);
+    margin-bottom: 30px;
+  }
+
+  .contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .form-group label {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .required {
+    color: var(--natred-orange);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--light-gray);
+    opacity: 0.6;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--natred-orange);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .contact-form .btn {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+  }
+
+  .contact-info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .contact-card {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-md);
+    padding: 25px;
+    transition: all var(--transition-normal);
+  }
+
+  .contact-card:hover {
+    border-color: var(--natred-orange);
+  }
+
+  .contact-card h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--natred-orange);
+    margin-bottom: 15px;
+  }
+
+  .contact-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--natred-orange);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-label {
+    display: block;
+    color: var(--light-gray);
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    display: block;
+    color: var(--white);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  a.contact-value {
+    transition: color var(--transition-fast);
+  }
+
+  a.contact-value:hover {
+    color: var(--natred-orange);
+  }
+
+  .response-info {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-left: 3px solid var(--natred-orange);
+    border-radius: var(--radius-md);
+    padding: 25px;
+  }
+
+  .response-info h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--white);
+  }
+
+  .response-info ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .response-info li {
+    color: var(--light-gray);
+    font-size: 14px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .response-info li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--natred-orange);
+    font-weight: bold;
+  }
+
+  .turnstile-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  #contact-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .form-feedback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: var(--radius-md);
+    color: #4CAF50;
+    font-weight: 500;
+    grid-column: 1 / -1;
+  }
+
+  .form-feedback[hidden] {
+    display: none;
+  }
+
+  .feedback-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #4CAF50;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .contact-form {
+      grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+      grid-column: auto;
+    }
+
+    .contact-form .btn {
+      grid-column: auto;
+    }
+  }
+</style>
+
+<script>
+  // Turnstile callbacks
+  let turnstileVerified = false;
+  const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement;
+
+  (window as any).onTurnstileSuccess = function(token: string) {
+    turnstileVerified = true;
+    if (submitBtn) submitBtn.disabled = false;
+  };
+
+  (window as any).onTurnstileExpired = function() {
+    turnstileVerified = false;
+    if (submitBtn) submitBtn.disabled = true;
+  };
+
+  // Contact page form handler
+  const form = document.getElementById('contact-page-form') as HTMLFormElement;
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (!turnstileVerified) {
+      alert('Please complete the verification challenge.');
+      return;
+    }
+
+    const formData = new FormData(form);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const company = formData.get('company') as string;
+    const phone = formData.get('phone') as string;
+    const message = formData.get('message') as string;
+
+    const subject = encodeURIComponent(`IT Support Enquiry from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\n` +
+      `Email: ${email}\n` +
+      (company ? `Company: ${company}\n` : '') +
+      (phone ? `Phone: ${phone}\n` : '') +
+      `\nMessage:\n${message}`
+    );
+
+    // Show feedback
+    const feedback = document.getElementById('form-feedback');
+    if (feedback) feedback.hidden = false;
+
+    // Open email client
+    window.location.href = `mailto:service@natred.com?subject=${subject}&body=${body}`;
+
+    // Hide feedback after delay
+    setTimeout(() => {
+      if (feedback) feedback.hidden = true;
+    }, 5000);
+  });
+</script>

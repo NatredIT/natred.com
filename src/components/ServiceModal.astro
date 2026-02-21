@@ -1,0 +1,693 @@
+---
+// Service Modal - Shows service details and contact form
+const services = [
+  {
+    id: "support",
+    title: "IT Support & Monitoring",
+    shortDesc: "Keep your business running without the headaches",
+    breakdown: [
+      { label: "What it means", text: "We watch over your computers, servers, and network 24/7. When something breaks or slows down, we fix it—often before you even notice there's a problem." },
+      { label: "What you get", text: "Fewer disruptions to your workday. No more waiting hours for someone to 'look into it'. Your team stays productive." },
+      { label: "How it works", text: "We install monitoring software that alerts us to issues. You call or email when you need help, and we handle the rest—remotely or on-site." }
+    ]
+  },
+  {
+    id: "microsoft",
+    title: "Microsoft 365 Migration & Management",
+    shortDesc: "Move to modern email and collaboration tools",
+    breakdown: [
+      { label: "What it means", text: "We move your email, files, and team tools to Microsoft 365—the same system used by most professional businesses. If you're already on it but it's messy, we clean it up." },
+      { label: "What you get", text: "Professional email (@yourcompany.com), shared calendars that actually sync, file storage your team can access from anywhere, and video calls that work." },
+      { label: "How it works", text: "We plan the move, migrate your data without losing anything, set up your team, and train everyone on the basics. No confusing jargon." }
+    ]
+  },
+  {
+    id: "voip",
+    title: "VoIP & Teams Calling",
+    shortDesc: "Replace your old phone system with something better",
+    breakdown: [
+      { label: "What it means", text: "Your desk phones and phone numbers move to the internet. You can make and receive business calls from your computer, mobile, or a desk phone—anywhere." },
+      { label: "What you get", text: "One system for calls, video meetings, and messaging. No more paying for separate phone lines. Your receptionist can transfer calls to staff working from home." },
+      { label: "How it works", text: "We set up Microsoft Teams as your phone system. Your existing numbers transfer over. Staff download an app, and everything just works." }
+    ]
+  },
+  {
+    id: "network",
+    title: "Network Infrastructure",
+    shortDesc: "WiFi that works and a network you can rely on",
+    breakdown: [
+      { label: "What it means", text: "We design and install the cabling, WiFi access points, and network equipment that connects all your devices. Properly done, not the cheapest option that barely works." },
+      { label: "What you get", text: "Fast, reliable internet everywhere in your building. No dead zones. Guests get separate WiFi from your business systems. Everything is secure." },
+      { label: "How it works", text: "We assess your space, design a network layout, run cables where needed, and install commercial-grade equipment. Then we configure and test everything." }
+    ]
+  },
+  {
+    id: "website",
+    title: "Website Management & Hosting",
+    shortDesc: "Keep your website online and working",
+    breakdown: [
+      { label: "What it means", text: "We make sure your website stays online, loads fast, and doesn't get hacked. We handle the technical stuff—domains, hosting, security certificates, updates." },
+      { label: "What you get", text: "Peace of mind that your website won't go down or show security warnings. Someone to call when you need changes made." },
+      { label: "How it works", text: "We manage your hosting, keep software updated, renew your domain and security certificates, and make content changes when you need them." }
+    ]
+  },
+  {
+    id: "code",
+    title: "Custom Software Development",
+    shortDesc: "Software built specifically for how you work",
+    breakdown: [
+      { label: "What it means", text: "When off-the-shelf software doesn't fit your needs, we build something that does. Automations, internal tools, integrations between your existing systems." },
+      { label: "What you get", text: "Software that matches your workflow instead of forcing you to change how you work. Time saved on repetitive tasks. Systems that talk to each other." },
+      { label: "How it works", text: "We learn how your business operates, identify what can be automated or improved, then build and deploy the solution. You own it completely." }
+    ]
+  },
+  {
+    id: "procurement",
+    title: "IT Procurement & Licensing",
+    shortDesc: "Get the right equipment at fair prices",
+    breakdown: [
+      { label: "What it means", text: "We source computers, servers, software licences, and equipment for you. You see the actual costs—no hidden markups or vendor kickbacks." },
+      { label: "What you get", text: "The right hardware for your needs (not oversold or undersold). Proper licensing so you're not breaking rules. Clear invoices showing what you paid for." },
+      { label: "How it works", text: "Tell us what you need, we spec it out and quote it. You approve, we order and set everything up. Simple." }
+    ]
+  },
+  {
+    id: "consulting",
+    title: "IT Consulting & Project Work",
+    shortDesc: "Expert help for moves, upgrades, and big changes",
+    breakdown: [
+      { label: "What it means", text: "Moving office? Opening a new branch? Upgrading systems? We handle the IT side of major projects—planning, installation, and making sure it all works on day one." },
+      { label: "What you get", text: "Someone who's done this before managing the technical complexity. No surprises on moving day. Systems ready when your team walks in." },
+      { label: "How it works", text: "We scope the project, create a plan with timelines, coordinate with other contractors if needed, and execute. You focus on your business." }
+    ]
+  },
+  {
+    id: "analytics",
+    title: "Business Intelligence & Data Analytics",
+    shortDesc: "Turn your business data into useful insights",
+    breakdown: [
+      { label: "What it means", text: "We take the data trapped in your spreadsheets and systems and turn it into dashboards and reports that actually tell you what's happening in your business." },
+      { label: "What you get", text: "Clear visibility into sales, operations, finances—whatever matters to you. Answers to questions without waiting for someone to pull a report." },
+      { label: "How it works", text: "We connect to your existing data sources, build automated reports and dashboards, and train you to use them. No more manual spreadsheet wrangling." }
+    ]
+  }
+];
+---
+
+<div class="service-modal-overlay" id="service-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="service-modal">
+    <button class="modal-close" aria-label="Close" data-close-service-modal>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="service-modal-grid">
+      <!-- Left: Contact Form -->
+      <div class="service-modal-form">
+        <h2>Get in touch</h2>
+        <p class="form-subtitle">Tell us about your needs and we'll get back to you within 24 hours.</p>
+
+        <form id="service-contact-form" action="https://formsubmit.co/service@natred.com" method="POST">
+          <input type="hidden" name="_subject" id="service-form-subject" value="Service Enquiry">
+          <input type="hidden" name="_template" value="table">
+
+          <div class="form-group">
+            <label for="service-name">Name</label>
+            <input type="text" id="service-name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="service-email">Email</label>
+            <input type="email" id="service-email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="service-company">Company</label>
+            <input type="text" id="service-company" name="company">
+          </div>
+
+          <div class="form-group">
+            <label for="service-reason">I'm interested in</label>
+            <input type="text" id="service-reason" name="reason" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="service-message">Tell us more</label>
+            <textarea id="service-message" name="message" rows="3" placeholder="What challenges are you facing? What would success look like?"></textarea>
+          </div>
+
+          <div class="form-group turnstile-container">
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAACXuVntH3ohsUMHG" data-callback="onServiceTurnstileSuccess" data-theme="dark"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="service-submit-btn" disabled>Send Enquiry</button>
+        </form>
+      </div>
+
+      <!-- Right: Service Breakdown -->
+      <div class="service-modal-info">
+        <div class="service-hero" id="service-hero">
+          <!-- SVG illustration populated by JS -->
+        </div>
+
+        <div class="service-info-header">
+          <span class="service-label">About this service</span>
+          <h3 id="service-modal-title">Service Title</h3>
+          <p id="service-modal-short" class="service-short-desc">Short description</p>
+        </div>
+
+        <div class="service-breakdown" id="service-breakdown">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .service-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .service-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .service-modal {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+
+  .service-modal-overlay.open .service-modal {
+    transform: translateY(0);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--light-gray);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 10;
+    transition: color 0.2s ease;
+  }
+
+  .modal-close:hover {
+    color: var(--white);
+  }
+
+  .service-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Left side - Form */
+  .service-modal-form {
+    padding: 50px 40px;
+    border-right: 1px solid var(--dark-gray);
+  }
+
+  .service-modal-form h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .form-subtitle {
+    color: var(--light-gray);
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--light-gray);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--black);
+    border: 1px solid var(--dark-gray);
+    color: var(--white);
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--natred-orange);
+  }
+
+  .form-group input[readonly] {
+    background: rgba(242, 103, 34, 0.1);
+    border-color: rgba(242, 103, 34, 0.3);
+    color: var(--natred-orange);
+  }
+
+  .btn-full {
+    width: 100%;
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .turnstile-container {
+    min-height: 65px;
+  }
+
+  /* Right side - Info */
+  .service-modal-info {
+    padding: 50px 40px;
+    background: var(--black);
+  }
+
+  .service-hero {
+    width: 100%;
+    height: 180px;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, var(--charcoal) 0%, var(--black) 100%);
+    border: 1px solid var(--dark-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .service-hero svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .service-info-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--dark-gray);
+  }
+
+  .service-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--natred-orange);
+    font-weight: 500;
+  }
+
+  .service-modal-info h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 10px 0;
+  }
+
+  .service-short-desc {
+    color: var(--light-gray);
+    font-size: 15px;
+  }
+
+  .service-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .breakdown-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .breakdown-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--natred-orange);
+    font-weight: 500;
+  }
+
+  .breakdown-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--light-gray);
+  }
+
+  @media (max-width: 768px) {
+    .service-modal-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-modal-form {
+      border-right: none;
+      border-bottom: 1px solid var(--dark-gray);
+      padding: 40px 24px;
+    }
+
+    .service-modal-info {
+      padding: 40px 24px;
+    }
+
+    .service-modal {
+      max-height: none;
+    }
+  }
+</style>
+
+<script>
+  const serviceModal = document.getElementById('service-modal');
+  const serviceModalTitle = document.getElementById('service-modal-title');
+  const serviceModalShort = document.getElementById('service-modal-short');
+  const serviceBreakdown = document.getElementById('service-breakdown');
+  const serviceHero = document.getElementById('service-hero');
+  const serviceReasonInput = document.getElementById('service-reason') as HTMLInputElement;
+  const serviceFormSubject = document.getElementById('service-form-subject') as HTMLInputElement;
+  const serviceSubmitBtn = document.getElementById('service-submit-btn') as HTMLButtonElement;
+
+  const heroImages: Record<string, string> = {
+    support: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="120" y="40" width="160" height="100" rx="4" stroke="#f26722" stroke-width="2" fill="none"/>
+      <rect x="140" y="60" width="40" height="30" rx="2" fill="#2a2a2a" stroke="#888" stroke-width="1"/>
+      <rect x="190" y="60" width="40" height="30" rx="2" fill="#2a2a2a" stroke="#888" stroke-width="1"/>
+      <rect x="240" y="60" width="20" height="30" rx="2" fill="#2a2a2a" stroke="#888" stroke-width="1"/>
+      <circle cx="155" cy="75" r="4" fill="#4CAF50"/>
+      <circle cx="205" cy="75" r="4" fill="#4CAF50"/>
+      <circle cx="250" cy="75" r="4" fill="#4CAF50"/>
+      <path d="M140 110h120" stroke="#888" stroke-width="1"/>
+      <path d="M140 120h80" stroke="#888" stroke-width="1"/>
+      <circle cx="60" cy="90" r="25" stroke="#f26722" stroke-width="2" fill="none"/>
+      <path d="M60 75v15h12" stroke="#f26722" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="340" cy="90" r="25" stroke="#888" stroke-width="2" fill="none"/>
+      <path d="M330 90l7 7 13-13" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M85 90h35M280 90h35" stroke="#888" stroke-width="1" stroke-dasharray="4 4"/>
+    </svg>`,
+    microsoft: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="160" y="50" width="35" height="35" fill="#f26722"/>
+      <rect x="205" y="50" width="35" height="35" fill="#888"/>
+      <rect x="160" y="95" width="35" height="35" fill="#888"/>
+      <rect x="205" y="95" width="35" height="35" fill="#f26722"/>
+      <path d="M80 90h60" stroke="#888" stroke-width="1" stroke-dasharray="4 4"/>
+      <path d="M260 90h60" stroke="#888" stroke-width="1" stroke-dasharray="4 4"/>
+      <rect x="40" y="70" width="40" height="40" rx="4" stroke="#888" stroke-width="1.5" fill="none"/>
+      <path d="M50 85h20M50 95h15" stroke="#888" stroke-width="1"/>
+      <rect x="320" y="60" width="50" height="60" rx="4" stroke="#4CAF50" stroke-width="1.5" fill="none"/>
+      <path d="M330 75h30M330 85h25M330 95h30M330 105h20" stroke="#4CAF50" stroke-width="1"/>
+      <path d="M140 90l-20-15v30z" fill="#f26722"/>
+    </svg>`,
+    voip: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="160" y="50" width="80" height="80" rx="8" stroke="#f26722" stroke-width="2" fill="none"/>
+      <circle cx="200" cy="80" r="15" stroke="#888" stroke-width="1.5" fill="none"/>
+      <path d="M195 77v6h6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M175 110h50" stroke="#888" stroke-width="1"/>
+      <path d="M185 120h30" stroke="#888" stroke-width="1"/>
+      <rect x="50" y="65" width="50" height="70" rx="6" stroke="#888" stroke-width="1.5" fill="none"/>
+      <rect x="58" y="75" width="34" height="20" rx="2" fill="#2a2a2a"/>
+      <circle cx="75" cy="120" r="6" stroke="#888" stroke-width="1"/>
+      <rect x="300" y="60" width="60" height="35" rx="4" stroke="#888" stroke-width="1.5" fill="none"/>
+      <circle cx="315" cy="77" r="5" fill="#4CAF50"/>
+      <path d="M325 72h25M325 77h20M325 82h25" stroke="#888" stroke-width="1"/>
+      <path d="M300 115h60" stroke="#888" stroke-width="1.5"/>
+      <path d="M310 115v15M350 115v15" stroke="#888" stroke-width="1.5"/>
+      <path d="M100 90h60M240 90h60" stroke="#f26722" stroke-width="1" stroke-dasharray="6 4"/>
+    </svg>`,
+    network: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="90" r="20" stroke="#f26722" stroke-width="2" fill="none"/>
+      <circle cx="200" cy="90" r="6" fill="#f26722"/>
+      <circle cx="80" cy="50" r="15" stroke="#888" stroke-width="1.5" fill="none"/>
+      <circle cx="320" cy="50" r="15" stroke="#888" stroke-width="1.5" fill="none"/>
+      <circle cx="80" cy="130" r="15" stroke="#888" stroke-width="1.5" fill="none"/>
+      <circle cx="320" cy="130" r="15" stroke="#888" stroke-width="1.5" fill="none"/>
+      <path d="M95 55l85 30M185 95l-85 30" stroke="#f26722" stroke-width="1"/>
+      <path d="M305 55l-85 30M215 95l85 30" stroke="#f26722" stroke-width="1"/>
+      <rect x="60" y="42" width="40" height="16" rx="2" fill="#2a2a2a" stroke="#888" stroke-width="1"/>
+      <rect x="300" y="42" width="40" height="16" rx="2" fill="#2a2a2a" stroke="#888" stroke-width="1"/>
+      <circle cx="70" cy="50" r="3" fill="#4CAF50"/>
+      <circle cx="310" cy="50" r="3" fill="#4CAF50"/>
+      <path d="M140 160h120" stroke="#888" stroke-width="1"/>
+      <path d="M160 160v-10M200 160v-10M240 160v-10" stroke="#888" stroke-width="1"/>
+    </svg>`,
+    website: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="100" y="30" width="200" height="120" rx="4" stroke="#f26722" stroke-width="2" fill="none"/>
+      <path d="M100 55h200" stroke="#f26722" stroke-width="1"/>
+      <circle cx="115" cy="42" r="5" fill="#888"/>
+      <circle cx="130" cy="42" r="5" fill="#888"/>
+      <circle cx="145" cy="42" r="5" fill="#888"/>
+      <rect x="115" y="70" width="80" height="8" rx="1" fill="#2a2a2a"/>
+      <rect x="115" y="85" width="60" height="6" rx="1" fill="#2a2a2a"/>
+      <rect x="115" y="95" width="70" height="6" rx="1" fill="#2a2a2a"/>
+      <rect x="115" y="105" width="50" height="6" rx="1" fill="#2a2a2a"/>
+      <rect x="210" y="70" width="75" height="50" rx="2" fill="#2a2a2a" stroke="#888" stroke-width="1"/>
+      <rect x="115" y="125" width="60" height="12" rx="2" fill="#f26722"/>
+      <circle cx="50" cy="90" r="20" stroke="#4CAF50" stroke-width="2" fill="none"/>
+      <path d="M42 90l6 6 12-12" stroke="#4CAF50" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="350" cy="90" r="20" stroke="#888" stroke-width="2" fill="none"/>
+      <path d="M350 80v20M340 90h20" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+    </svg>`,
+    code: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="100" y="30" width="200" height="120" rx="4" stroke="#f26722" stroke-width="2" fill="none"/>
+      <path d="M100 55h200" stroke="#f26722" stroke-width="1"/>
+      <circle cx="115" cy="42" r="4" fill="#f26722"/>
+      <circle cx="128" cy="42" r="4" fill="#888"/>
+      <circle cx="141" cy="42" r="4" fill="#888"/>
+      <text x="120" y="78" fill="#f26722" font-family="monospace" font-size="12">const</text>
+      <text x="155" y="78" fill="#888" font-family="monospace" font-size="12">solution</text>
+      <text x="215" y="78" fill="#f26722" font-family="monospace" font-size="12">=</text>
+      <text x="120" y="95" fill="#888" font-family="monospace" font-size="12">  buildFor(</text>
+      <text x="120" y="112" fill="#4CAF50" font-family="monospace" font-size="12">    yourBusiness</text>
+      <text x="120" y="129" fill="#888" font-family="monospace" font-size="12">  );</text>
+      <path d="M50 70l-20 20 20 20" stroke="#f26722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M350 70l20 20-20 20" stroke="#f26722" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`,
+    procurement: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="150" y="40" width="100" height="100" rx="4" stroke="#f26722" stroke-width="2" fill="none"/>
+      <path d="M175 40v-15h50v15" stroke="#f26722" stroke-width="2"/>
+      <path d="M170 70h60M170 90h45M170 110h55" stroke="#888" stroke-width="1.5"/>
+      <circle cx="265" cy="125" r="15" stroke="#888" stroke-width="1.5" fill="none"/>
+      <path d="M273 133l8 8" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+      <rect x="50" y="60" width="60" height="45" rx="4" stroke="#888" stroke-width="1.5" fill="none"/>
+      <path d="M60 75h40M60 85h30M60 95h35" stroke="#888" stroke-width="1"/>
+      <rect x="290" y="55" width="70" height="50" rx="4" stroke="#4CAF50" stroke-width="1.5" fill="none"/>
+      <path d="M300 70h50M300 80h40M300 90h45" stroke="#4CAF50" stroke-width="1"/>
+      <text x="305" y="100" fill="#4CAF50" font-size="8">APPROVED</text>
+      <path d="M110 82h40M250 82h40" stroke="#f26722" stroke-width="1" stroke-dasharray="4 4"/>
+    </svg>`,
+    consulting: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="60" r="25" stroke="#f26722" stroke-width="2" fill="none"/>
+      <path d="M170 130c0-20 13-30 30-30s30 10 30 30" stroke="#f26722" stroke-width="2"/>
+      <rect x="60" y="80" width="50" height="60" rx="4" stroke="#888" stroke-width="1.5" fill="none"/>
+      <path d="M70 95h30M70 105h25M70 115h28M70 125h20" stroke="#888" stroke-width="1"/>
+      <rect x="290" y="80" width="50" height="60" rx="4" stroke="#888" stroke-width="1.5" fill="none"/>
+      <path d="M300 95h30M300 105h25M300 115h28M300 125h20" stroke="#888" stroke-width="1"/>
+      <path d="M110 110h60M230 110h60" stroke="#f26722" stroke-width="1" stroke-dasharray="4 4"/>
+      <circle cx="150" cy="110" r="5" fill="#f26722"/>
+      <circle cx="250" cy="110" r="5" fill="#f26722"/>
+      <path d="M230 55l15-10M230 65l20 5" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>`,
+    analytics: `<svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="100" y="30" width="200" height="120" rx="4" stroke="#f26722" stroke-width="2" fill="none"/>
+      <path d="M120 130v-30M150 130v-50M180 130v-35M210 130v-60M240 130v-45M270 130v-70" stroke="#888" stroke-width="8" stroke-linecap="round"/>
+      <path d="M120 100l30-20 30 15 30-25 30 15 30-25" stroke="#f26722" stroke-width="2" fill="none"/>
+      <circle cx="120" cy="100" r="4" fill="#f26722"/>
+      <circle cx="150" cy="80" r="4" fill="#f26722"/>
+      <circle cx="180" cy="95" r="4" fill="#f26722"/>
+      <circle cx="210" cy="70" r="4" fill="#f26722"/>
+      <circle cx="240" cy="85" r="4" fill="#f26722"/>
+      <circle cx="270" cy="60" r="4" fill="#f26722"/>
+      <rect x="40" y="70" width="40" height="55" rx="2" stroke="#888" stroke-width="1" fill="none"/>
+      <path d="M48 85h24M48 95h18M48 105h22M48 115h16" stroke="#888" stroke-width="1"/>
+      <path d="M80 97h20" stroke="#f26722" stroke-width="1" stroke-dasharray="3 3"/>
+      <circle cx="350" cy="90" r="25" stroke="#4CAF50" stroke-width="2" fill="none"/>
+      <path d="M350 90l15-15M350 90h20" stroke="#4CAF50" stroke-width="2"/>
+      <text x="342" y="95" fill="#4CAF50" font-size="10">85%</text>
+    </svg>`
+  };
+
+  const servicesData = [
+    {
+      id: "support",
+      title: "IT Support & Monitoring",
+      shortDesc: "Keep your business running without the headaches",
+      breakdown: [
+        { label: "What it means", text: "We watch over your computers, servers, and network 24/7. When something breaks or slows down, we fix it—often before you even notice there's a problem." },
+        { label: "What you get", text: "Fewer disruptions to your workday. No more waiting hours for someone to 'look into it'. Your team stays productive." },
+        { label: "How it works", text: "We install monitoring software that alerts us to issues. You call or email when you need help, and we handle the rest—remotely or on-site." }
+      ]
+    },
+    {
+      id: "microsoft",
+      title: "Microsoft 365 Migration & Management",
+      shortDesc: "Move to modern email and collaboration tools",
+      breakdown: [
+        { label: "What it means", text: "We move your email, files, and team tools to Microsoft 365—the same system used by most professional businesses. If you're already on it but it's messy, we clean it up." },
+        { label: "What you get", text: "Professional email (@yourcompany.com), shared calendars that actually sync, file storage your team can access from anywhere, and video calls that work." },
+        { label: "How it works", text: "We plan the move, migrate your data without losing anything, set up your team, and train everyone on the basics. No confusing jargon." }
+      ]
+    },
+    {
+      id: "voip",
+      title: "VoIP & Teams Calling",
+      shortDesc: "Replace your old phone system with something better",
+      breakdown: [
+        { label: "What it means", text: "Your desk phones and phone numbers move to the internet. You can make and receive business calls from your computer, mobile, or a desk phone—anywhere." },
+        { label: "What you get", text: "One system for calls, video meetings, and messaging. No more paying for separate phone lines. Your receptionist can transfer calls to staff working from home." },
+        { label: "How it works", text: "We set up Microsoft Teams as your phone system. Your existing numbers transfer over. Staff download an app, and everything just works." }
+      ]
+    },
+    {
+      id: "network",
+      title: "Network Infrastructure",
+      shortDesc: "WiFi that works and a network you can rely on",
+      breakdown: [
+        { label: "What it means", text: "We design and install the cabling, WiFi access points, and network equipment that connects all your devices. Properly done, not the cheapest option that barely works." },
+        { label: "What you get", text: "Fast, reliable internet everywhere in your building. No dead zones. Guests get separate WiFi from your business systems. Everything is secure." },
+        { label: "How it works", text: "We assess your space, design a network layout, run cables where needed, and install commercial-grade equipment. Then we configure and test everything." }
+      ]
+    },
+    {
+      id: "website",
+      title: "Website Management & Hosting",
+      shortDesc: "Keep your website online and working",
+      breakdown: [
+        { label: "What it means", text: "We make sure your website stays online, loads fast, and doesn't get hacked. We handle the technical stuff—domains, hosting, security certificates, updates." },
+        { label: "What you get", text: "Peace of mind that your website won't go down or show security warnings. Someone to call when you need changes made." },
+        { label: "How it works", text: "We manage your hosting, keep software updated, renew your domain and security certificates, and make content changes when you need them." }
+      ]
+    },
+    {
+      id: "code",
+      title: "Custom Software Development",
+      shortDesc: "Software built specifically for how you work",
+      breakdown: [
+        { label: "What it means", text: "When off-the-shelf software doesn't fit your needs, we build something that does. Automations, internal tools, integrations between your existing systems." },
+        { label: "What you get", text: "Software that matches your workflow instead of forcing you to change how you work. Time saved on repetitive tasks. Systems that talk to each other." },
+        { label: "How it works", text: "We learn how your business operates, identify what can be automated or improved, then build and deploy the solution. You own it completely." }
+      ]
+    },
+    {
+      id: "procurement",
+      title: "IT Procurement & Licensing",
+      shortDesc: "Get the right equipment at fair prices",
+      breakdown: [
+        { label: "What it means", text: "We source computers, servers, software licences, and equipment for you. You see the actual costs—no hidden markups or vendor kickbacks." },
+        { label: "What you get", text: "The right hardware for your needs (not oversold or undersold). Proper licensing so you're not breaking rules. Clear invoices showing what you paid for." },
+        { label: "How it works", text: "Tell us what you need, we spec it out and quote it. You approve, we order and set everything up. Simple." }
+      ]
+    },
+    {
+      id: "consulting",
+      title: "IT Consulting & Project Work",
+      shortDesc: "Expert help for moves, upgrades, and big changes",
+      breakdown: [
+        { label: "What it means", text: "Moving office? Opening a new branch? Upgrading systems? We handle the IT side of major projects—planning, installation, and making sure it all works on day one." },
+        { label: "What you get", text: "Someone who's done this before managing the technical complexity. No surprises on moving day. Systems ready when your team walks in." },
+        { label: "How it works", text: "We scope the project, create a plan with timelines, coordinate with other contractors if needed, and execute. You focus on your business." }
+      ]
+    },
+    {
+      id: "analytics",
+      title: "Business Intelligence & Data Analytics",
+      shortDesc: "Turn your business data into useful insights",
+      breakdown: [
+        { label: "What it means", text: "We take the data trapped in your spreadsheets and systems and turn it into dashboards and reports that actually tell you what's happening in your business." },
+        { label: "What you get", text: "Clear visibility into sales, operations, finances—whatever matters to you. Answers to questions without waiting for someone to pull a report." },
+        { label: "How it works", text: "We connect to your existing data sources, build automated reports and dashboards, and train you to use them. No more manual spreadsheet wrangling." }
+      ]
+    }
+  ];
+
+  // Open modal with specific service
+  function openServiceModal(serviceIndex: number) {
+    const service = servicesData[serviceIndex];
+    if (!service) return;
+
+    if (serviceModalTitle) serviceModalTitle.textContent = service.title;
+    if (serviceModalShort) serviceModalShort.textContent = service.shortDesc;
+    if (serviceReasonInput) serviceReasonInput.value = service.title;
+    if (serviceFormSubject) serviceFormSubject.value = `Service Enquiry: ${service.title}`;
+
+    if (serviceHero && heroImages[service.id]) {
+      serviceHero.innerHTML = heroImages[service.id];
+    }
+
+    if (serviceBreakdown) {
+      serviceBreakdown.innerHTML = service.breakdown.map(item => `
+        <div class="breakdown-item">
+          <span class="breakdown-label">${item.label}</span>
+          <p class="breakdown-text">${item.text}</p>
+        </div>
+      `).join('');
+    }
+
+    serviceModal?.classList.add('open');
+    serviceModal?.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeServiceModal() {
+    serviceModal?.classList.remove('open');
+    serviceModal?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Attach click handlers to service cards
+  document.querySelectorAll('.service-card').forEach((card, index) => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      openServiceModal(index);
+    });
+  });
+
+  // Close handlers
+  document.querySelectorAll('[data-close-service-modal]').forEach(btn => {
+    btn.addEventListener('click', closeServiceModal);
+  });
+
+  serviceModal?.addEventListener('click', (e) => {
+    if (e.target === serviceModal) closeServiceModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && serviceModal?.classList.contains('open')) {
+      closeServiceModal();
+    }
+  });
+
+  // Turnstile callback
+  (window as any).onServiceTurnstileSuccess = function() {
+    if (serviceSubmitBtn) serviceSubmitBtn.disabled = false;
+  };
+</script>

@@ -1,0 +1,203 @@
+---
+// Testimonial Modal - Shows full testimonial content
+---
+
+<div class="testimonial-modal-overlay" id="testimonial-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="testimonial-modal-title">
+  <div class="testimonial-modal">
+    <button class="modal-close" aria-label="Close testimonial" data-close-testimonial>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="testimonial-modal-content">
+      <div class="quote-mark">"</div>
+      <div class="testimonial-text">
+        <p>During the acquisition, refurbishment, and relaunch of Genesis Clinic, a private maternity hospital, we engaged Natred to upgrade our on-site IT infrastructure and ensure we were fully operational from day one. Their scope of work included server procurement in close consultation with our medical software provider, complete cabling and network installation, the setup of all company software accounts and shared workspaces, and hands-on assistance in onboarding staff with individual email accounts and digital workspaces.</p>
+        <p>Nate and his team were consistently efficient, responsive, and a pleasure to work with. Clear, prompt communication is a standout strength, and this was especially valuable given the complexity of our project. Our building presented several unexpected cabling challenges, all of which Nate addressed decisively and creatively on site, ensuring no disruption to timelines.</p>
+        <p>Natred's services were competitively priced, and throughout the process we felt confident that our IT infrastructure was in knowledgeable, capable hands. As a medical facility with complex billing, compliance, and record-keeping requirements, reliable technology is not optional. For this reason, we have extended our relationship with Natred to include ongoing IT support. Knowing this critical aspect of our business is managed swiftly and expertly provides us with genuine peace of mind.</p>
+      </div>
+      <div class="quote-mark end">"</div>
+
+      <div class="testimonial-attribution">
+        <span class="testimonial-name">Jude Polack</span>
+        <span class="testimonial-title">Director, Genesis Clinic</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .testimonial-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+  }
+
+  .testimonial-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .testimonial-modal {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-lg);
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 50px;
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s ease;
+  }
+
+  .testimonial-modal-overlay.open .testimonial-modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--light-gray);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.1s ease-out;
+  }
+
+  .modal-close:hover {
+    color: var(--white);
+    background: var(--dark-gray);
+  }
+
+  .testimonial-modal-content {
+    position: relative;
+  }
+
+  .quote-mark {
+    font-size: 80px;
+    color: var(--natred-orange);
+    line-height: 1;
+    font-family: Georgia, serif;
+    opacity: 0.5;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+  }
+
+  .quote-mark.end {
+    position: static;
+    text-align: right;
+    margin-top: -30px;
+  }
+
+  .testimonial-text {
+    padding: 20px 0 0 30px;
+  }
+
+  .testimonial-text p {
+    color: var(--white);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .testimonial-text p:last-child {
+    margin-bottom: 10px;
+  }
+
+  .testimonial-attribution {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--dark-gray);
+    text-align: right;
+  }
+
+  .testimonial-name {
+    display: block;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .testimonial-title {
+    color: var(--natred-orange);
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    .testimonial-modal {
+      padding: 40px 25px;
+    }
+
+    .quote-mark {
+      font-size: 60px;
+      top: -15px;
+      left: -5px;
+    }
+
+    .testimonial-text {
+      padding: 15px 0 0 20px;
+    }
+
+    .testimonial-text p {
+      font-size: 15px;
+    }
+  }
+</style>
+
+<script>
+  const overlay = document.getElementById('testimonial-modal');
+
+  // Open triggers
+  document.querySelectorAll('[data-open-testimonial]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      overlay?.classList.add('open');
+      overlay?.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close button
+  overlay?.querySelectorAll('[data-close-testimonial]').forEach(btn => {
+    btn.addEventListener('click', () => closeModal());
+  });
+
+  // Close on overlay click
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) closeModal();
+  });
+
+  // Close on escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay?.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  function closeModal() {
+    overlay?.classList.remove('open');
+    overlay?.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+</script>

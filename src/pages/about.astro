@@ -1,0 +1,323 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<PageLayout
+  title="About Us"
+  description="Learn about Natred's approach to honest IT services. 12 years of industry experience delivering transparent IT support in Johannesburg and across South Africa."
+>
+  <HeroSection
+    title="An Honest IT Company"
+    subtitle="Built on transparency, delivered with expertise"
+    description="Natred was founded on a simple principle: IT companies shouldn't overcomplicate things to pad their invoices. We provide straightforward IT support with transparent pricing."
+    compact={true}
+    showCta={false}
+  />
+
+  <!-- Our Story Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="content-grid">
+        <div class="content-text">
+          <div class="accent-line"></div>
+          <h2 class="animate-on-scroll fade-up">Our Story</h2>
+          <p class="animate-on-scroll fade-up">
+            Natred was built on a simple observation: most IT companies make things more complicated
+            than they need to be. Complex jargon, opaque invoices, unnecessary "solutions" that
+            create new problems.
+          </p>
+          <p class="animate-on-scroll fade-up">
+            Backed by over 12 years of combined industry experience across enterprise and SMB
+            environments, our team understands what businesses actually need from their IT
+            partner—and what they don't.
+          </p>
+          <p class="animate-on-scroll fade-up">
+            Natred exists to be different. We give you straight answers, transparent pricing, and IT
+            that actually works. When something needs to be fixed, we fix it. When you don't need
+            something, we tell you.
+          </p>
+        </div>
+        <div class="content-visual animate-on-scroll fade-left">
+          <div class="stat-block">
+            <span class="stat-number">12+</span>
+            <span class="stat-label">Years Industry Experience</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Transparent Pricing</span>
+          </div>
+          <div class="stat-block">
+            <span class="stat-number">0</span>
+            <span class="stat-label">Hidden Fees</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="section section-charcoal">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll fade-up">The "Honest IT" Philosophy</h2>
+      <div class="philosophy-grid stagger-children">
+        <div class="philosophy-item">
+          <div class="philosophy-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="16" width="48" height="32" rx="2" stroke="#f26722" stroke-width="3" fill="none"/>
+              <line x1="8" y1="28" x2="56" y2="28" stroke="#f26722" stroke-width="2"/>
+              <line x1="16" y1="36" x2="32" y2="36" stroke="#888" stroke-width="2"/>
+              <line x1="16" y1="42" x2="28" y2="42" stroke="#888" stroke-width="2"/>
+              <circle cx="48" cy="40" r="6" fill="#f26722"/>
+              <text x="48" y="43" font-size="8" fill="#fff" text-anchor="middle">R</text>
+            </svg>
+          </div>
+          <h3>Itemized Invoices</h3>
+          <p>Every line item explained. Every cost justified. You see exactly what you're paying for—hardware, software, labour, markup (if any). No "miscellaneous charges."</p>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="24" stroke="#f26722" stroke-width="3" fill="none"/>
+              <path d="M 22 32 L 28 38 L 42 24" stroke="#f26722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Honest Recommendations</h3>
+          <p>If you don't need something, we'll tell you. We'd rather have a long-term client who trusts us than squeeze extra revenue from unnecessary services.</p>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="8" width="40" height="48" rx="2" stroke="#f26722" stroke-width="3" fill="none"/>
+              <circle cx="32" cy="24" r="8" stroke="#888" stroke-width="2" fill="none"/>
+              <path d="M 20 48 Q 20 36 32 36 Q 44 36 44 48" stroke="#888" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <h3>Plain Language</h3>
+          <p>We explain things in terms you understand. No hiding behind jargon, no making simple things sound complicated to justify our existence.</p>
+        </div>
+        <div class="philosophy-item">
+          <div class="philosophy-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 32 8 L 56 20 L 56 44 L 32 56 L 8 44 L 8 20 Z" stroke="#f26722" stroke-width="3" fill="none"/>
+              <path d="M 32 32 L 32 56" stroke="#888" stroke-width="2"/>
+              <path d="M 32 32 L 56 20" stroke="#888" stroke-width="2"/>
+              <path d="M 32 32 L 8 20" stroke="#888" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Know Our Limits</h3>
+          <p>We don't pretend to do everything. If you need security systems, telecoms, or other specialized work, we partner with people who are actually experts in those areas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal Entity Section -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="legal-info animate-on-scroll fade-up">
+        <h2>Company Information</h2>
+        <div class="legal-grid">
+          <div class="legal-item">
+            <span class="legal-label">Trading Name</span>
+            <span class="legal-value">Natred</span>
+          </div>
+          <div class="legal-item">
+            <span class="legal-label">Legal Entity</span>
+            <span class="legal-value">Avian Forge (Pty) Ltd</span>
+          </div>
+          <div class="legal-item">
+            <span class="legal-label">Registration Number</span>
+            <span class="legal-value">2024/212590/07</span>
+          </div>
+          <div class="legal-item">
+            <span class="legal-label">Location</span>
+            <span class="legal-value">Johannesburg, South Africa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section section-charcoal cta-section">
+    <div class="container">
+      <div class="cta-content animate-on-scroll fade-up">
+        <h2>Ready to Work With an Honest IT Company?</h2>
+        <p>Get in touch for a free assessment. No obligation, no hard sell—just a straight conversation about your IT needs.</p>
+        <button class="btn btn-primary btn-lg" data-open-contact-modal>Get In Touch</button>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .content-text h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    margin-bottom: 30px;
+  }
+
+  .content-text p {
+    color: var(--light-gray);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .content-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-block {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    text-align: center;
+    transition: all var(--transition-normal);
+  }
+
+  .stat-block:hover {
+    border-color: var(--natred-orange);
+    transform: translateY(-3px);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--natred-orange);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .stat-label {
+    display: block;
+    color: var(--light-gray);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  .philosophy-item {
+    text-align: center;
+  }
+
+  .philosophy-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+  }
+
+  .philosophy-item h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--white);
+  }
+
+  .philosophy-item p {
+    color: var(--light-gray);
+    line-height: 1.7;
+  }
+
+  .legal-info {
+    text-align: center;
+  }
+
+  .legal-info h2 {
+    margin-bottom: 40px;
+  }
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: left;
+  }
+
+  .legal-item {
+    background: var(--charcoal);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--dark-gray);
+  }
+
+  .legal-label {
+    display: block;
+    color: var(--natred-orange);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .legal-value {
+    display: block;
+    color: var(--white);
+    font-size: 15px;
+  }
+
+  .cta-section {
+    text-align: center;
+    border-top: 2px solid var(--dark-gray);
+  }
+
+  .cta-content h2 {
+    margin-bottom: 20px;
+  }
+
+  .cta-content p {
+    color: var(--light-gray);
+    font-size: 18px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .philosophy-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .legal-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .content-visual {
+      order: -1;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-block {
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .stat-number {
+      font-size: 36px;
+    }
+  }
+</style>

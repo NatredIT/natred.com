@@ -1,0 +1,213 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<PageLayout
+  title="Ethical AI Use Policy"
+  description="Natred's policy on ethical AI use, data handling, human oversight, and transparency in AI-assisted IT services."
+>
+  <HeroSection
+    title="Ethical AI Use Policy"
+    subtitle="How we use AI responsibly"
+    compact={true}
+    showCta={false}
+  />
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="policy-content">
+        <div class="policy-intro animate-on-scroll fade-up">
+          <p class="last-updated">Last updated: February 2026</p>
+          <p class="intro-text">At Natred, we use AI tools to enhance our services and deliver better outcomes for clients. This policy explains how we integrate AI into our work, how we protect your data, and how we maintain human accountability.</p>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>1. Our AI Philosophy</h2>
+          <p>We view AI as a tool to augment human expertise, not replace it. AI helps us work more efficiently, but every decision that affects your business is made or reviewed by a qualified human professional.</p>
+          <p>We use AI because it genuinely improves outcomes—faster problem diagnosis, better documentation, more thorough analysis. We don't use it as a gimmick or to cut corners on the work that matters.</p>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>2. How We Use AI</h2>
+          <p>We may use AI tools in the following areas of our work:</p>
+          <ul>
+            <li><strong>Technical Support:</strong> AI assists in diagnosing issues, searching documentation, and suggesting solutions. All recommendations are verified by our technical team before implementation.</li>
+            <li><strong>Documentation:</strong> AI helps draft technical documentation, procedures, and reports. All documents are reviewed and edited by humans before delivery.</li>
+            <li><strong>Code Development:</strong> For custom software projects, AI may assist with code generation and review. All code is tested and reviewed by developers.</li>
+            <li><strong>Communication:</strong> AI may help draft routine communications, but all client-facing messages are reviewed before sending.</li>
+            <li><strong>Data Analysis:</strong> AI tools may be used to analyse system logs, identify patterns, and generate insights. Findings are interpreted by qualified analysts.</li>
+          </ul>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>3. Data Handling in AI Contexts</h2>
+          <p>We take data protection seriously, especially when AI tools are involved:</p>
+          <ul>
+            <li><strong>Data Minimization:</strong> We only share the minimum necessary data with AI systems to accomplish the task at hand.</li>
+            <li><strong>No Sensitive Data:</strong> We do not input passwords, credentials, personal health information, or other sensitive data into third-party AI systems without explicit client consent and appropriate safeguards.</li>
+            <li><strong>Approved Tools Only:</strong> We only use AI tools that meet our security and privacy standards. We evaluate each tool's data handling policies before adoption.</li>
+            <li><strong>Client Data Isolation:</strong> We do not train AI models on client data or allow client information to be used to improve third-party AI services without explicit consent.</li>
+          </ul>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>4. Human Oversight</h2>
+          <p>Every AI-assisted task includes human oversight:</p>
+          <ul>
+            <li>A qualified team member reviews all AI-generated outputs before they're used or delivered.</li>
+            <li>Critical decisions (security configurations, access controls, system changes) are always made by humans.</li>
+            <li>AI recommendations are treated as suggestions, not directives.</li>
+            <li>If AI output seems incorrect or inappropriate, we investigate and correct it.</li>
+          </ul>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>5. Transparency</h2>
+          <p>We believe in being upfront about AI use:</p>
+          <ul>
+            <li>If you ask whether AI was used in a particular deliverable, we'll tell you honestly.</li>
+            <li>We don't misrepresent AI-generated work as purely human-created.</li>
+            <li>If AI limitations affect our ability to deliver on a task, we'll let you know.</li>
+            <li>We maintain documentation of how AI is used in our processes.</li>
+          </ul>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>6. AI Tool Selection Criteria</h2>
+          <p>Before adopting any AI tool for client work, we evaluate:</p>
+          <ul>
+            <li>Privacy policy and data handling practices</li>
+            <li>Security certifications and compliance (where applicable)</li>
+            <li>Data retention and deletion policies</li>
+            <li>Whether data is used to train models</li>
+            <li>Jurisdiction and legal compliance</li>
+          </ul>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>7. Client-Specific AI Implementations</h2>
+          <p>When we implement AI solutions for clients (such as automated document processing or chatbots), we:</p>
+          <ul>
+            <li>Clearly define what the AI will and won't be used for</li>
+            <li>Establish appropriate access controls and audit logging</li>
+            <li>Provide training on proper use and limitations</li>
+            <li>Set up monitoring for accuracy and appropriate use</li>
+            <li>Create processes for handling AI errors or edge cases</li>
+          </ul>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>8. Accountability</h2>
+          <p>We take responsibility for all work delivered, whether AI-assisted or not:</p>
+          <ul>
+            <li>AI use does not diminish our liability or accountability.</li>
+            <li>If AI-assisted work contains errors, we fix them at no additional cost.</li>
+            <li>We maintain professional standards regardless of how work was produced.</li>
+          </ul>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>9. Updates to This Policy</h2>
+          <p>AI technology evolves rapidly. We review and update this policy regularly to reflect new tools, capabilities, and best practices. Material changes will be communicated to active clients.</p>
+        </div>
+
+        <div class="policy-section animate-on-scroll fade-up">
+          <h2>10. Questions</h2>
+          <p>If you have questions about how we use AI in your projects, or concerns about AI use, please contact us:</p>
+          <p class="contact-info">
+            <strong>Email:</strong> <a href="mailto:service@natred.com">service@natred.com</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .policy-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .policy-intro {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--dark-gray);
+  }
+
+  .last-updated {
+    color: var(--natred-orange);
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .intro-text {
+    color: var(--light-gray);
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .policy-section {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--dark-gray);
+  }
+
+  .policy-section:last-child {
+    border-bottom: none;
+  }
+
+  .policy-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .policy-section p {
+    color: var(--light-gray);
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+
+  .policy-section ul {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 0;
+  }
+
+  .policy-section li {
+    color: var(--light-gray);
+    line-height: 1.8;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+  }
+
+  .policy-section li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--natred-orange);
+  }
+
+  .policy-section li strong {
+    color: var(--white);
+  }
+
+  .contact-info {
+    background: var(--charcoal);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--natred-orange);
+  }
+
+  .contact-info a {
+    color: var(--natred-orange);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-info a:hover {
+    color: var(--white);
+  }
+</style>

@@ -1,0 +1,342 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<PageLayout
+  title="Partnerships"
+  description="Partner with Natred for mutual growth. We work with complementary IT service providers, technology vendors, and business consultants."
+>
+  <HeroSection
+    title="Partner With Us"
+    subtitle="Mutual growth through collaboration"
+    description="We believe in working with specialists rather than trying to do everything ourselves. If you have expertise that complements our services, let's talk."
+    compact={true}
+    showCta={false}
+  />
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll fade-up">Partnership Types</h2>
+      <div class="partnership-grid stagger-children">
+        <div class="partnership-card">
+          <div class="partnership-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="24" r="12" stroke="#f26722" stroke-width="3" fill="none"/>
+              <circle cx="44" cy="24" r="12" stroke="#f26722" stroke-width="3" fill="none"/>
+              <path d="M 8 52 Q 8 40 20 40 Q 32 40 32 52" stroke="#f26722" stroke-width="3" fill="none"/>
+              <path d="M 32 52 Q 32 40 44 40 Q 56 40 56 52" stroke="#f26722" stroke-width="3" fill="none"/>
+              <path d="M 28 24 L 36 24" stroke="#f26722" stroke-width="2" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <h3>Referral Partners</h3>
+          <p>Refer clients who need IT services and earn 10% commission on the first invoice. Simple, transparent, no ongoing obligations.</p>
+          <a href="/referral-program" class="partner-link">Learn about our Referral Program</a>
+        </div>
+
+        <div class="partnership-card">
+          <div class="partnership-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="16" width="20" height="32" rx="2" stroke="#f26722" stroke-width="3" fill="none"/>
+              <rect x="36" y="16" width="20" height="32" rx="2" stroke="#f26722" stroke-width="3" fill="none"/>
+              <line x1="28" y1="28" x2="36" y2="28" stroke="#f26722" stroke-width="2"/>
+              <line x1="28" y1="36" x2="36" y2="36" stroke="#f26722" stroke-width="2"/>
+              <circle cx="18" cy="26" r="4" fill="#888"/>
+              <circle cx="46" cy="26" r="4" fill="#888"/>
+              <line x1="14" y1="38" x2="22" y2="38" stroke="#888" stroke-width="2"/>
+              <line x1="42" y1="38" x2="50" y2="38" stroke="#888" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Technical Partners</h3>
+          <p>Specialists in security systems, telecoms, structured cabling, or other IT-adjacent services. We refer work we don't do, you refer IT work to us.</p>
+          <span class="partner-note">Two-way referral arrangement</span>
+        </div>
+
+        <div class="partnership-card">
+          <div class="partnership-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 32 8 L 56 20 L 56 44 L 32 56 L 8 44 L 8 20 Z" stroke="#f26722" stroke-width="3" fill="none"/>
+              <circle cx="32" cy="32" r="8" stroke="#888" stroke-width="2" fill="none"/>
+              <circle cx="32" cy="32" r="3" fill="#f26722"/>
+            </svg>
+          </div>
+          <h3>Vendor Partners</h3>
+          <p>Software and hardware vendors whose products we deploy. We help clients implement your solutions properly and provide ongoing support.</p>
+          <span class="partner-note">Implementation & support partnership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-charcoal">
+    <div class="container">
+      <div class="benefits-section">
+        <div class="benefits-content animate-on-scroll fade-up">
+          <div class="accent-line"></div>
+          <h2>Why Partner With Natred?</h2>
+          <ul class="benefits-list">
+            <li>
+              <strong>Transparent relationships</strong> — No hidden agendas, no competing for the same work. We stick to our lane.
+            </li>
+            <li>
+              <strong>Quality-focused</strong> — We only refer to partners whose work we trust. Expect the same standard in return.
+            </li>
+            <li>
+              <strong>Clear communication</strong> — Regular updates on referred work, straightforward handoffs, no client confusion.
+            </li>
+            <li>
+              <strong>Growing network</strong> — Access to our client base across healthcare, professional services, and SMBs.
+            </li>
+          </ul>
+        </div>
+        <div class="partner-cta animate-on-scroll fade-left">
+          <div class="cta-card">
+            <h3>Interested in Partnering?</h3>
+            <p>Tell us about your business and how you think we could work together.</p>
+            <button class="btn btn-primary btn-lg" data-open-contact-modal>Start a Conversation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="current-needs animate-on-scroll fade-up">
+        <h2 class="section-title">Currently Looking For</h2>
+        <p class="needs-intro">We're actively seeking partners in these areas:</p>
+        <div class="needs-grid">
+          <div class="need-item">
+            <span class="need-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <span>Security Systems (CCTV, Access Control)</span>
+          </div>
+          <div class="need-item">
+            <span class="need-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </span>
+            <span>Traditional Telecoms / PBX</span>
+          </div>
+          <div class="need-item">
+            <span class="need-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </span>
+            <span>Structured Cabling Specialists</span>
+          </div>
+          <div class="need-item">
+            <span class="need-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </span>
+            <span>Cybersecurity Consultants</span>
+          </div>
+          <div class="need-item">
+            <span class="need-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </span>
+            <span>Industry-Specific Software Vendors</span>
+          </div>
+          <div class="need-item">
+            <span class="need-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </span>
+            <span>Business Process Consultants</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .partnership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .partnership-card {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-md);
+    padding: 35px;
+    transition: all var(--transition-normal);
+  }
+
+  .partnership-card:hover {
+    border-color: var(--natred-orange);
+    transform: translateY(-5px);
+  }
+
+  .partnership-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+
+  .partnership-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: var(--white);
+  }
+
+  .partnership-card p {
+    color: var(--light-gray);
+    line-height: 1.7;
+    margin-bottom: 15px;
+  }
+
+  .partner-link {
+    color: var(--natred-orange);
+    font-weight: 500;
+    font-size: 14px;
+    transition: color var(--transition-fast);
+  }
+
+  .partner-link:hover {
+    color: var(--white);
+  }
+
+  .partner-link::after {
+    content: ' \2192';
+  }
+
+  .partner-note {
+    display: inline-block;
+    background: var(--dark-gray);
+    color: var(--light-gray);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+  }
+
+  .benefits-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .benefits-content h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-bottom: 30px;
+  }
+
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .benefits-list li {
+    color: var(--light-gray);
+    line-height: 1.7;
+    padding-left: 25px;
+    position: relative;
+  }
+
+  .benefits-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--natred-orange);
+    font-weight: bold;
+  }
+
+  .benefits-list strong {
+    color: var(--white);
+  }
+
+  .cta-card {
+    background: var(--dark-gray);
+    border: 1px solid var(--dark-gray);
+    border-left: 3px solid var(--natred-orange);
+    border-radius: var(--radius-md);
+    padding: 35px;
+    text-align: center;
+  }
+
+  .cta-card h3 {
+    margin-bottom: 15px;
+  }
+
+  .cta-card p {
+    color: var(--light-gray);
+    margin-bottom: 25px;
+  }
+
+  .current-needs {
+    text-align: center;
+  }
+
+  .needs-intro {
+    color: var(--light-gray);
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+
+  .needs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .need-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    transition: all var(--transition-normal);
+  }
+
+  .need-item:hover {
+    border-color: var(--natred-orange);
+  }
+
+  .need-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--natred-orange);
+    flex-shrink: 0;
+  }
+
+  .need-item span:last-child {
+    color: var(--white);
+    font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .benefits-section {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .partnership-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

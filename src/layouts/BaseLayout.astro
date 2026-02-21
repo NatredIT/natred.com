@@ -1,0 +1,104 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description = "Natred provides honest IT support, Microsoft 365 services, network infrastructure, and custom development for businesses in Johannesburg and across South Africa.",
+  canonicalUrl
+} = Astro.props;
+
+const siteUrl = "https://natred.com";
+const fullTitle = title === "Natred" ? title : `${title} | Natred`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+
+  <title>{fullTitle}</title>
+
+  <!-- Canonical URL -->
+  {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonicalUrl || siteUrl}>
+  <meta property="og:site_name" content="Natred">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={fullTitle}>
+  <meta name="twitter:description" content={description}>
+
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+  <!-- Theme: prevent FOUC by setting data-theme before paint -->
+  <script is:inline>
+    (function() {
+      var saved = localStorage.getItem('natred-theme');
+      var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
+  <!-- Global Styles -->
+  <style is:global>
+    @import '../styles/global.css';
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <slot />
+
+  <!-- Scroll Animation Script -->
+  <script>
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // Optionally unobserve after animation
+          // animationObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with animation classes
+    document.addEventListener('DOMContentLoaded', () => {
+      const animatedElements = document.querySelectorAll('.animate-on-scroll, .stagger-children');
+      animatedElements.forEach(el => animationObserver.observe(el));
+    });
+
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.animate-on-scroll, .stagger-children').forEach(el => {
+        el.classList.add('visible');
+      });
+    }
+  </script>
+</body>
+</html>

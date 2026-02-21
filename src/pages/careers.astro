@@ -1,0 +1,351 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+---
+
+<PageLayout
+  title="Careers"
+  description="Explore career opportunities at Natred. Join our team of IT professionals delivering honest IT services in Johannesburg and across South Africa."
+>
+  <HeroSection
+    title="Join Our Team"
+    subtitle="Work with people who value honesty and expertise"
+    description="At Natred, we believe in straightforward work done well. If you share that philosophy and have the skills to back it up, we'd like to hear from you."
+    compact={true}
+    showCta={false}
+  />
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="no-positions animate-on-scroll fade-up">
+        <div class="status-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="28" stroke="#f26722" stroke-width="3" fill="none"/>
+            <circle cx="32" cy="32" r="8" fill="#f26722"/>
+            <path d="M 32 12 L 32 24" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 32 40 L 32 52" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 12 32 L 24 32" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 40 32 L 52 32" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2>No Open Positions</h2>
+        <p>We don't currently have any positions available, but that doesn't mean we're not interested in meeting talented people.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-charcoal">
+    <div class="container">
+      <div class="expression-section animate-on-scroll fade-up">
+        <div class="accent-line accent-line-center"></div>
+        <h2>Expression of Interest</h2>
+        <p class="expression-intro">If you think you'd be a good fit for Natred, send us an email. Tell us about yourself, your experience, and what kind of role you're looking for. We keep expressions of interest on file and reach out when something suitable comes up.</p>
+
+        <div class="email-cta">
+          <a href="mailto:careers@natred.com?subject=Expression%20of%20Interest" class="btn btn-primary btn-lg">
+            Email careers@natred.com
+          </a>
+        </div>
+
+        <div class="what-to-include">
+          <h3>What to Include</h3>
+          <ul>
+            <li>Brief overview of your experience and skills</li>
+            <li>What type of role you're interested in</li>
+            <li>Why you think Natred would be a good fit</li>
+            <li>CV/resume attachment (optional but helpful)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll fade-up">What We Value</h2>
+      <div class="values-grid stagger-children">
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="24" stroke="#f26722" stroke-width="3" fill="none"/>
+              <path d="M 22 32 L 28 38 L 42 24" stroke="#f26722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Honesty</h3>
+          <p>With clients, with each other, about what we know and don't know. No pretending, no overselling.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="20" width="40" height="28" rx="2" stroke="#f26722" stroke-width="3" fill="none"/>
+              <polyline points="20,32 28,40 44,24" stroke="#888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M 32 8 L 32 20" stroke="#f26722" stroke-width="3"/>
+              <circle cx="32" cy="8" r="3" fill="#f26722"/>
+            </svg>
+          </div>
+          <h3>Competence</h3>
+          <p>Knowing your stuff, learning what you don't, and being willing to say "I need to look into that."</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 32 8 C 32 8 8 24 8 40 C 8 52 18 56 32 56 C 46 56 56 52 56 40 C 56 24 32 8 32 8 Z" stroke="#f26722" stroke-width="3" fill="none"/>
+              <circle cx="24" cy="36" r="3" fill="#888"/>
+              <circle cx="40" cy="36" r="3" fill="#888"/>
+              <path d="M 26 44 Q 32 48 38 44" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Client Care</h3>
+          <p>Treating clients like people, not ticket numbers. Understanding their business, not just their tech.</p>
+        </div>
+
+        <div class="value-card">
+          <div class="value-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="20" r="12" stroke="#f26722" stroke-width="3" fill="none"/>
+              <path d="M 12 56 Q 12 40 32 40 Q 52 40 52 56" stroke="#f26722" stroke-width="3" fill="none"/>
+              <line x1="32" y1="16" x2="32" y2="24" stroke="#888" stroke-width="2"/>
+              <line x1="28" y1="20" x2="36" y2="20" stroke="#888" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Ownership</h3>
+          <p>Taking responsibility for problems until they're solved. Following up, following through.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-charcoal">
+    <div class="container">
+      <div class="culture-section">
+        <div class="culture-content animate-on-scroll fade-up">
+          <div class="accent-line"></div>
+          <h2>How We Work</h2>
+          <p>We're a small team that operates with minimal bureaucracy. You won't find pointless meetings, corporate speak, or unnecessary processes here. We focus on doing good work for clients and going home at a reasonable hour.</p>
+          <p>We use modern tools, stay current with technology, and invest in learning. But we also know that sometimes the best solution is the simplest one, not the most cutting-edge.</p>
+          <p>Based in Johannesburg, we serve clients across South Africa. Remote work is possible for the right roles, but we value face-to-face collaboration when it matters.</p>
+        </div>
+        <div class="culture-visual animate-on-scroll fade-left">
+          <div class="culture-item">
+            <span class="culture-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <span>Reasonable hours</span>
+          </div>
+          <div class="culture-item">
+            <span class="culture-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </span>
+            <span>Learning supported</span>
+          </div>
+          <div class="culture-item">
+            <span class="culture-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </span>
+            <span>Modern tooling</span>
+          </div>
+          <div class="culture-item">
+            <span class="culture-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </span>
+            <span>Small team, big impact</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .no-positions {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+
+  .status-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+  }
+
+  .no-positions h2 {
+    margin-bottom: 20px;
+  }
+
+  .no-positions p {
+    color: var(--light-gray);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .expression-section {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .expression-section h2 {
+    margin-bottom: 20px;
+  }
+
+  .expression-intro {
+    color: var(--light-gray);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+  }
+
+  .email-cta {
+    margin-bottom: 40px;
+  }
+
+  .what-to-include {
+    background: var(--dark-gray);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    text-align: left;
+  }
+
+  .what-to-include h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  .what-to-include ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .what-to-include li {
+    color: var(--light-gray);
+    padding-left: 25px;
+    position: relative;
+  }
+
+  .what-to-include li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--natred-orange);
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .value-card {
+    text-align: center;
+    padding: 35px;
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-normal);
+  }
+
+  .value-card:hover {
+    border-color: var(--natred-orange);
+    transform: translateY(-3px);
+  }
+
+  .value-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+  }
+
+  .value-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .value-card p {
+    color: var(--light-gray);
+    line-height: 1.6;
+  }
+
+  .culture-section {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .culture-content h2 {
+    margin-bottom: 25px;
+  }
+
+  .culture-content p {
+    color: var(--light-gray);
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .culture-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .culture-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--dark-gray);
+    border: 1px solid var(--dark-gray);
+    padding: 18px 20px;
+    transition: border-color 0.1s ease-out, background 0.1s ease-out;
+  }
+
+  .culture-item:hover {
+    border-color: var(--natred-orange);
+    background: var(--charcoal);
+  }
+
+  .culture-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--natred-orange);
+    flex-shrink: 0;
+  }
+
+  .culture-item span:last-child {
+    color: var(--white);
+    font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .culture-section {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

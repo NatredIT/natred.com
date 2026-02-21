@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natred | IT Support & Honest IT Services Johannesburg | Microsoft 365 Specialists</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --natred-orange: #f26722;
+            --black: #000000;
+            --white: #ffffff;
+            --charcoal: #1a1a1a;
+            --dark-gray: #2a2a2a;
+            --light-gray: #888888;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background: var(--black);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        /* Header */
+        header {
+            padding: 35px 0;
+            border-bottom: 1px solid var(--dark-gray);
+            background: var(--black);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 15px;
+            transition: color 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--natred-orange);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-symbol {
+            height: 65px;
+            width: auto;
+        }
+        
+        .logo-img {
+            height: 100px;
+            width: auto;
+        }
+        
+        .contact-cta {
+            background: var(--natred-orange);
+            color: var(--white);
+            padding: 12px 28px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--natred-orange);
+        }
+        
+        .contact-cta:hover {
+            background: transparent;
+            color: var(--natred-orange);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            background: var(--charcoal);
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-image svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero .subtitle {
+            font-size: 20px;
+            color: var(--light-gray);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero-description {
+            font-size: 18px;
+            max-width: 800px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--light-gray);
+            font-weight: 300;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: var(--natred-orange);
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--natred-orange);
+        }
+        
+        .hero-cta:hover {
+            background: transparent;
+            color: var(--natred-orange);
+            transform: translateY(-2px);
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .secondary-cta {
+            display: inline-block;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white);
+        }
+        
+        .secondary-cta:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+        
+        .service-cta {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--natred-orange);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .service-cta:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+        
+        .service-cta::after {
+            content: ' →';
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--black);
+        }
+        
+        /* AI Section */
+        .ai-section {
+            padding: 100px 0;
+            background: var(--charcoal);
+            border-top: 2px solid var(--natred-orange);
+            border-bottom: 2px solid var(--natred-orange);
+        }
+        
+        .ai-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .ai-section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: -0.02em;
+        }
+        
+        .ai-section .subtitle {
+            font-size: 22px;
+            color: var(--natred-orange);
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .ai-section p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+        
+        .ai-outcomes {
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .ai-outcome {
+            margin-bottom: 45px;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .ai-outcome-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+        }
+        
+        .ai-outcome-content {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .ai-outcome h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+        
+        .ai-outcome p {
+            font-size: 17px;
+            margin: 0;
+            color: var(--light-gray);
+        }
+        
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: 100px 0;
+            background: var(--charcoal);
+        }
+        
+        .testimonial-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial-quote {
+            font-size: 28px;
+            line-height: 1.6;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 35px;
+            font-style: italic;
+        }
+        
+        .testimonial-quote::before {
+            content: '"';
+            color: var(--natred-orange);
+        }
+        
+        .testimonial-quote::after {
+            content: '"';
+            color: var(--natred-orange);
+        }
+        
+        .testimonial-attribution {
+            font-size: 16px;
+            color: var(--light-gray);
+        }
+        
+        .testimonial-name {
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .testimonial-title {
+            color: var(--natred-orange);
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .service-card {
+            padding: 35px;
+            background: var(--charcoal);
+            border: 1px solid var(--dark-gray);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--natred-orange);
+            box-shadow: 0 10px 40px rgba(242, 103, 34, 0.15);
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .service-card p {
+            color: var(--light-gray);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+        
+        /* Why Us Section */
+        .why-us {
+            padding: 100px 0;
+            background: var(--black);
+        }
+        
+        .why-us-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .why-item {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--dark-gray);
+        }
+        
+        .why-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .why-item h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .why-item h3::before {
+            content: "→";
+            color: var(--natred-orange);
+            margin-right: 12px;
+            font-weight: 700;
+        }
+        
+        .why-item p {
+            color: var(--light-gray);
+            line-height: 1.8;
+            font-weight: 300;
+            font-size: 17px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: var(--black);
+            border-top: 2px solid var(--dark-gray);
+        }
+        
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            color: var(--light-gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 50px 0 30px;
+            background: var(--charcoal);
+            color: var(--light-gray);
+            border-top: 1px solid var(--dark-gray);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .footer-company {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column h4 {
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--natred-orange);
+        }
+        
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--dark-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        footer p {
+            margin-bottom: 8px;
+            font-weight: 300;
+            font-size: 15px;
+        }
+        
+        footer .company-name {
+            color: var(--white);
+            font-weight: 500;
+        }
+        
+        footer .legal-entity {
+            color: var(--light-gray);
+            font-size: 13px;
+            font-style: italic;
+        }
+        
+        footer .copyright {
+            font-size: 14px;
+            color: var(--light-gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .logo-symbol {
+                height: 50px;
+            }
+            
+            .logo-img {
+                height: 80px;
+            }
+            
+            .logo-container {
+                gap: 8px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <svg class="logo-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612">
+                        <style>
+                            .symbol-main { fill: #ffffff; }
+                            .symbol-accent { fill: #f26722; }
+                        </style>
+                        <polygon class="symbol-main" points="348.77 232.17 144.73 40.09 144.73 40.09 110.85 40.09 110.85 40.09 76.97 40.09 76.96 40.09 43.09 40.09 43.1 572.91 76.98 572.91 76.98 572.91 110.86 572.91 110.86 572.91 144.74 572.91 144.74 572.9 218.47 512.87 218.46 403.97 144.74 464 144.73 149 348.77 341.08 348.77 232.17"/>
+                        <polygon class="symbol-accent" points="76.98 423.49 43.1 394.87 43.09 40.09 76.97 40.09 76.98 423.49"/>
+                        <polygon class="symbol-main" points="270.23 380.83 474.27 572.91 474.27 572.91 508.15 572.91 508.15 572.91 542.03 572.91 542.04 572.91 575.91 572.91 575.9 40.09 542.02 40.09 542.02 40.09 508.14 40.09 508.14 40.09 474.26 40.09 474.26 40.1 400.53 100.13 400.54 209.03 474.26 149 474.27 464 270.23 271.92 270.23 380.83"/>
+                        <polygon class="symbol-accent" points="542.02 189.51 575.9 218.13 575.91 572.91 542.03 572.91 542.02 189.51"/>
+                    </svg>
+                    <svg class="logo-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310.11 278">
+                        <style>
+                            .logo-bg { fill: transparent; }
+                            .logo-text { fill: #ffffff; }
+                            .logo-accent { fill: #f26722; }
+                            .logo-slogan { 
+                                fill: #ffffff; 
+                                font-family: Inter, sans-serif;
+                                font-size: 14px;
+                                font-weight: 200;
+                                letter-spacing: -0.02em;
+                            }
+                        </style>
+                        <rect class="logo-bg" x="-3.93" y="-3.52" width="317.96" height="285.03"/>
+                        <g>
+                            <path class="logo-text" d="M65.49,160.22h-8.11l-29.5-42.7h-.31c.1,1.68.23,3.77.39,6.26.15,2.5.23,5.06.23,7.7v28.73h-6.41v-51.41h8.03l29.42,42.55h.31c-.05-.77-.12-1.92-.19-3.46-.08-1.54-.15-3.22-.23-5.04-.08-1.82-.12-3.5-.12-5.04v-29.02h6.49v51.41Z"/>
+                            <path class="logo-text" d="M115.07,160.22l-6.64-15.91h-21.86l-6.56,15.91h-7.03l21.55-51.62h6.26l21.47,51.62h-7.18ZM100.17,122.99c-.15-.38-.41-1.08-.77-2.09-.36-1.01-.71-2.05-1.04-3.13-.34-1.08-.61-1.91-.81-2.48-.36,1.49-.77,2.94-1.24,4.36-.46,1.42-.85,2.53-1.16,3.35l-6.26,15.55h17.45l-6.18-15.55Z"/>
+                            <path class="logo-text" d="M141.87,160.22h-6.95v-45.72h-17.22v-5.69h41.32v5.69h-17.14v45.72Z"/>
+                            <path class="logo-text" d="M182.57,108.81c6.85,0,11.9,1.21,15.18,3.64,3.27,2.42,4.9,6.08,4.9,10.98,0,2.74-.54,5.02-1.62,6.84-1.08,1.82-2.46,3.28-4.13,4.36-1.67,1.08-3.44,1.93-5.29,2.56l15.14,23.04h-8.11l-13.36-21.24h-10.97v21.24h-6.95v-51.41h15.21ZM182.18,114.43h-7.88v19.08h8.26c4.48,0,7.75-.83,9.81-2.48,2.06-1.66,3.09-4.09,3.09-7.31s-1.08-5.75-3.24-7.16c-2.16-1.42-5.51-2.12-10.04-2.12Z"/>
+                            <path class="logo-accent" d="M244.16,160.22h-30.81v-51.41h30.81v5.69h-23.86v16.06h21.54v5.62h-21.54v18.36h23.86v5.69Z"/>
+                            <path class="logo-accent" d="M288.34,134.01c0,8.69-2.54,15.23-7.61,19.62-5.07,4.39-12.14,6.59-21.2,6.59h-15.37v-51.41h16.99c5.56,0,10.37.96,14.44,2.88,4.07,1.92,7.21,4.74,9.42,8.46,2.21,3.72,3.32,8.34,3.32,13.86ZM281,134.23c0-6.86-1.81-11.89-5.44-15.08-3.63-3.19-8.77-4.79-15.41-4.79h-9.04v40.32h7.49c14.93,0,22.4-6.82,22.4-20.45Z"/>
+                            <text class="logo-slogan" transform="translate(104.54 179.94) scale(1.07 1)">
+                                <tspan x="0" y="0">AN HONEST IT COMPANY</tspan>
+                            </text>
+                        </g>
+                    </svg>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#ai">AI Integration</a></li>
+                        <li><a href="#why">Why Natred</a></li>
+                    </ul>
+                    <a href="mailto:hello@natred.co.za?subject=Let's%20Talk" class="contact-cta">Get In Touch</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>IT Support That Doesn't<br>BS You</h1>
+                    <p class="subtitle">Johannesburg-based Honest IT Services</p>
+                    <p class="hero-description">
+                        Most IT companies overcomplicate things to justify their invoices. We don't. 
+                        You get straight answers, transparent pricing, and IT that actually works. 
+                        Microsoft 365, network infrastructure, migrations, and custom development for businesses across South Africa.
+                    </p>
+                    <a href="mailto:hello@natred.co.za?subject=IT%20Support%20Enquiry" class="hero-cta">Book Free Assessment</a>
+                </div>
+                <div class="hero-image">
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Background split -->
+                        <rect x="0" y="0" width="250" height="400" fill="#2a2a2a"/>
+                        <rect x="250" y="0" width="250" height="400" fill="#1a1a1a"/>
+                        
+                        <!-- Left side: "Other IT Companies" - Messy/Confusing -->
+                        <g id="messy-side">
+                            <!-- Tangled cables mess -->
+                            <path d="M 50 150 Q 80 100, 110 150 T 170 120 T 200 180" stroke="#666" stroke-width="4" fill="none" opacity="0.6"/>
+                            <path d="M 60 160 Q 90 200, 120 160 T 180 190 T 210 140" stroke="#666" stroke-width="4" fill="none" opacity="0.6"/>
+                            <path d="M 70 140 Q 100 180, 130 140 T 190 170 T 220 130" stroke="#666" stroke-width="4" fill="none" opacity="0.6"/>
+                            
+                            <!-- Confused server/computer -->
+                            <rect x="80" y="220" width="100" height="120" rx="5" fill="#333" stroke="#555" stroke-width="2"/>
+                            <circle cx="105" cy="260" r="8" fill="#666"/>
+                            <circle cx="155" cy="260" r="8" fill="#666"/>
+                            <path d="M 105 290 Q 130 280, 155 290" stroke="#666" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            
+                            <!-- Smoke/confusion clouds -->
+                            <ellipse cx="130" cy="190" rx="30" ry="20" fill="#444" opacity="0.4"/>
+                            <ellipse cx="150" cy="175" rx="25" ry="18" fill="#444" opacity="0.3"/>
+                            <ellipse cx="110" cy="180" rx="20" ry="15" fill="#444" opacity="0.3"/>
+                            
+                            <!-- Dollar signs (hidden costs) -->
+                            <text x="40" y="100" font-size="24" fill="#f26722" opacity="0.6">$$$</text>
+                            <text x="170" y="90" font-size="20" fill="#f26722" opacity="0.6">???</text>
+                            
+                            <!-- Big X over it -->
+                            <line x1="30" y1="80" x2="230" y2="360" stroke="#f26722" stroke-width="6" opacity="0.9"/>
+                            <line x1="230" y1="80" x2="30" y2="360" stroke="#f26722" stroke-width="6" opacity="0.9"/>
+                        </g>
+                        
+                        <!-- Right side: "Natred" - Clean/Organized -->
+                        <g id="clean-side">
+                            <!-- Organized server -->
+                            <rect x="320" y="180" width="120" height="160" rx="8" fill="#2a2a2a" stroke="#f26722" stroke-width="3"/>
+                            
+                            <!-- Server indicator lights -->
+                            <circle cx="350" cy="210" r="5" fill="#4CAF50"/>
+                            <circle cx="370" cy="210" r="5" fill="#4CAF50"/>
+                            <circle cx="390" cy="210" r="5" fill="#4CAF50"/>
+                            <circle cx="410" cy="210" r="5" fill="#4CAF50"/>
+                            
+                            <!-- Clean horizontal lines (organized cables/data) -->
+                            <line x1="330" y1="240" x2="430" y2="240" stroke="#f26722" stroke-width="2" opacity="0.7"/>
+                            <line x1="330" y1="260" x2="430" y2="260" stroke="#888" stroke-width="2" opacity="0.7"/>
+                            <line x1="330" y1="280" x2="430" y2="280" stroke="#888" stroke-width="2" opacity="0.7"/>
+                            <line x1="330" y1="300" x2="430" y2="300" stroke="#888" stroke-width="2" opacity="0.7"/>
+                            
+                            <!-- Happy face on server -->
+                            <circle cx="360" cy="145" r="8" fill="#f26722"/>
+                            <circle cx="400" cy="145" r="8" fill="#f26722"/>
+                            <path d="M 350 160 Q 380 175, 410 160" stroke="#f26722" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            
+                            <!-- Checkmark -->
+                            <path d="M 460 120 L 475 140 L 495 100" stroke="#4CAF50" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+                        
+                        <!-- Labels -->
+                        <text x="125" y="380" font-size="14" fill="#888" text-anchor="middle" font-family="Inter, sans-serif">Them</text>
+                        <text x="375" y="380" font-size="14" fill="#f26722" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600">Us</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>IT Support & Monitoring</h3>
+                    <p>Your servers, desktops, networks, and cloud systems monitored and maintained. When something breaks, we fix it. Before you even notice, ideally.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Microsoft 365 Migration & Management</h3>
+                    <p>Moving to M365? Already there but it's a mess? We handle SharePoint migrations, Exchange migrations, Teams setup, and ongoing administration.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>VoIP & Teams Calling</h3>
+                    <p>Replace your legacy phone system with Microsoft Teams calling. Proper integration with your M365 environment, none of the messy third-party VoIP setups that break every update.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Network Infrastructure</h3>
+                    <p>UniFi installations, VLAN configuration, structured cabling, WiFi that actually works everywhere. We design networks for businesses that need reliable connectivity.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Website Management & Hosting</h3>
+                    <p>Keep your website online, email working, and SSL certificates current. We handle domains, hosting, and all the backend configuration that breaks when someone tries to "just update one thing quickly".</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Custom Software Development</h3>
+                    <p>Sometimes off-the-shelf software doesn't fit. We build applications that solve your specific workflow problems, not generic ones.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>IT Procurement & Licensing</h3>
+                    <p>Hardware, software, licensing. We source it, you see the actual cost breakdown. No hidden markups, no vendor kickbacks.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>IT Consulting & Project Work</h3>
+                    <p>Office move? System upgrade? New clinic or branch opening? We handle the IT infrastructure side of your projects from planning to installation.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Business Intelligence & Data Analytics</h3>
+                    <p>Turn your data into decisions. We build dashboards, reports, and analytics solutions that show you what's actually happening in your business without the usual BI consultant waffle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="ai-section" id="ai">
+        <div class="container">
+            <div class="ai-content">
+                <h2>AI That Actually Helps Your Business</h2>
+                <p class="subtitle">Not hype. Practical automation that saves time.</p>
+                <p>Your team spends hours on tasks that shouldn't need a person. Sorting through invoices, answering the same customer questions, pulling reports from five different systems, checking forms for errors.</p>
+                <p>We set up AI to handle this repetitive work so your people can focus on what actually matters.</p>
+                
+                <div class="ai-outcomes">
+                    <div class="ai-outcome">
+                        <svg class="ai-outcome-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="12" y="8" width="40" height="48" rx="2" stroke="#f26722" stroke-width="3" fill="none"/>
+                            <line x1="20" y1="18" x2="44" y2="18" stroke="#888" stroke-width="2"/>
+                            <line x1="20" y1="26" x2="44" y2="26" stroke="#888" stroke-width="2"/>
+                            <line x1="20" y1="34" x2="38" y2="34" stroke="#888" stroke-width="2"/>
+                            <circle cx="48" cy="48" r="12" fill="#f26722"/>
+                            <path d="M 43 48 L 46 51 L 53 44" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        </svg>
+                        <div class="ai-outcome-content">
+                            <h3>Stop doing manual data entry.</h3>
+                            <p>Invoices, patient forms, supplier documents automatically read and entered into your systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-outcome">
+                        <svg class="ai-outcome-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M 16 32 Q 16 16 32 16 Q 48 16 48 32 Q 48 40 42 44 L 42 52 L 38 52 L 38 48 L 26 48 L 26 52 L 22 52 L 22 44 Q 16 40 16 32 Z" fill="#f26722"/>
+                            <circle cx="26" cy="28" r="2" fill="#fff"/>
+                            <circle cx="38" cy="28" r="2" fill="#fff"/>
+                            <path d="M 28 36 Q 32 38 36 36" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/>
+                        </svg>
+                        <div class="ai-outcome-content">
+                            <h3>Answer routine questions instantly.</h3>
+                            <p>Common enquiries handled automatically. Complex issues routed to the right person.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-outcome">
+                        <svg class="ai-outcome-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="8" y="12" width="48" height="40" rx="2" stroke="#f26722" stroke-width="3" fill="none"/>
+                            <line x1="16" y1="44" x2="16" y2="24" stroke="#888" stroke-width="2"/>
+                            <line x1="14" y1="44" x2="54" y2="44" stroke="#888" stroke-width="2"/>
+                            <polyline points="20,38 26,32 32,36 38,28 44,32 48,26" stroke="#f26722" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="ai-outcome-content">
+                            <h3>Get answers from your data without IT.</h3>
+                            <p>Ask questions in plain English, get actual answers. No waiting for reports.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ai-outcome">
+                        <svg class="ai-outcome-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="20" r="12" stroke="#f26722" stroke-width="3" fill="none"/>
+                            <circle cx="44" cy="20" r="12" stroke="#f26722" stroke-width="3" fill="none"/>
+                            <circle cx="20" cy="44" r="12" stroke="#f26722" stroke-width="3" fill="none"/>
+                            <circle cx="44" cy="44" r="12" stroke="#f26722" stroke-width="3" fill="none"/>
+                            <line x1="28" y1="24" x2="36" y2="28" stroke="#888" stroke-width="2.5"/>
+                            <line x1="28" y1="40" x2="36" y2="36" stroke="#888" stroke-width="2.5"/>
+                            <line x1="24" y1="28" x2="24" y2="36" stroke="#888" stroke-width="2.5"/>
+                            <line x1="40" y1="28" x2="40" y2="36" stroke="#888" stroke-width="2.5"/>
+                        </svg>
+                        <div class="ai-outcome-content">
+                            <h3>Works with what you already have.</h3>
+                            <p>Connects to your existing software. No ripping and replacing systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="why-us" id="why">
+        <div class="container">
+            <h2 class="section-title">Why We're Different</h2>
+            <div class="why-us-content">
+                <div class="why-item">
+                    <h3>No Hidden Costs</h3>
+                    <p>You get itemized invoices that actually make sense. Every license, every hour, every piece of hardware. If we're marking something up, you'll see it. Most IT companies don't operate this way because it kills their margin. We're fine with that.</p>
+                </div>
+                
+                <div class="why-item">
+                    <h3>12 Years in the Industry</h3>
+                    <p>Not some laatjie fresh off their first IT course. Actual enterprise and SMB experience with Microsoft environments, cloud infrastructure, and business systems. Started from help desk, worked through sysadmin roles, now running this.</p>
+                </div>
+                
+                <div class="why-item">
+                    <h3>We Build Custom Solutions When Needed</h3>
+                    <p>If there's software that solves your problem, we'll recommend it. If there isn't, we'll build it. Simple as that. Not everything needs a custom application, but some things do.</p>
+                </div>
+                
+                <div class="why-item">
+                    <h3>We Work With Other Specialists</h3>
+                    <p>If you need security systems, telecoms, or other IT-adjacent work, we partner with people who are actually good at those things instead of pretending we do everything. Better results for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="testimonial-content">
+                <p class="testimonial-quote">Natred's services were competitively priced, and throughout the process we felt confident that our IT infrastructure was in knowledgeable, capable hands.</p>
+                <div class="testimonial-attribution">
+                    <span class="testimonial-name">Jude Polack</span> — <span class="testimonial-title">Director, Genesis Clinic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Need IT Support?</h2>
+            <p>If you're tired of IT companies that overcomplicate things or hide costs, let's talk. Whether it's a migration project, ongoing support, or a one-off infrastructure job.</p>
+            <a href="mailto:hello@natred.co.za" class="contact-cta">Get In Touch</a>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-company">
+                    <p><span class="company-name">Natred</span></p>
+                    <p class="legal-entity">Avian Forge (Pty) Ltd</p>
+                    <p style="margin-top: 15px;">Honest IT Services & Business Solutions</p>
+                    <p>Johannesburg, South Africa</p>
+                    <p style="margin-top: 15px;"><a href="mailto:hello@natred.co.za" style="color: var(--natred-orange); text-decoration: none;">Contact Us</a></p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#services">IT Support</a></li>
+                            <li><a href="#services">Microsoft 365</a></li>
+                            <li><a href="#services">VoIP & Teams Calling</a></li>
+                            <li><a href="#services">Network Infrastructure</a></li>
+                            <li><a href="#services">Website Management</a></li>
+                            <li><a href="#services">Custom Development</a></li>
+                            <li><a href="#services">Business Intelligence</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#why">About Us</a></li>
+                            <li><a href="#ai">AI Integration</a></li>
+                            <li><a href="/partnerships">Partnerships</a></li>
+                            <li><a href="/careers">Careers</a></li>
+                            <li><a href="/referral-program">Referral Program</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="/privacy-policy">Privacy Policy</a></li>
+                            <li><a href="/terms-of-service">Terms of Service</a></li>
+                            <li><a href="/acceptable-use">Acceptable Use Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 Natred. An Honest IT Company.</p>
+                <p class=

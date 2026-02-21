@@ -1,0 +1,181 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  showCta?: boolean;
+  ctaText?: string;
+  ctaHref?: string;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+  compact?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  description,
+  showCta = true,
+  ctaText = "Get Started",
+  ctaHref,
+  secondaryCtaText,
+  secondaryCtaHref,
+  compact = false
+} = Astro.props;
+---
+
+<section class:list={["hero", { "hero-compact": compact }]}>
+  <div class="hero-bg-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="animate-on-scroll fade-up" set:html={title}></h1>
+        {subtitle && <p class="subtitle animate-on-scroll fade-up">{subtitle}</p>}
+        {description && <p class="hero-description animate-on-scroll fade-up">{description}</p>}
+        {showCta && (
+          <div class="cta-group animate-on-scroll fade-up">
+            {ctaHref ? (
+              <a href={ctaHref} class="btn btn-primary btn-lg">{ctaText}</a>
+            ) : (
+              <button class="btn btn-primary btn-lg" data-open-contact-modal>{ctaText}</button>
+            )}
+            {secondaryCtaText && secondaryCtaHref && (
+              <a href={secondaryCtaHref} class="btn btn-secondary btn-lg">{secondaryCtaText}</a>
+            )}
+          </div>
+        )}
+      </div>
+      <slot name="hero-image" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 100px 0 80px;
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-compact {
+    padding: 60px 0;
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      linear-gradient(rgba(242, 103, 34, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(242, 103, 34, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    animation: gridMove 30s linear infinite;
+  }
+
+  @keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-compact .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    max-width: 600px;
+  }
+
+  .hero-compact .hero-text {
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    color: var(--light-gray);
+    margin-bottom: 30px;
+    font-weight: 300;
+  }
+
+  .hero-description {
+    font-size: 18px;
+    max-width: 800px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: var(--light-gray);
+    font-weight: 300;
+  }
+
+  .hero-compact .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .hero-compact .cta-group {
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 60px 0;
+    }
+
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 16px;
+    }
+
+    .cta-group {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .cta-group .btn {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg-grid {
+      animation: none;
+    }
+  }
+</style>

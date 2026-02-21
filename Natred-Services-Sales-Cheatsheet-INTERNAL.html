@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natred Services Sales Cheat Sheet - INTERNAL ONLY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page { size: A4; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --orange: #f26722;
+            --black: #000000;
+            --dark: #1a1a1a;
+            --card: #141414;
+            --white: #ffffff;
+            --text-light: #999999;
+            --text-mid: #cccccc;
+            --border: #222222;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            gap: 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: var(--black);
+            color: var(--white);
+            padding: 32px 36px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .page:last-child { page-break-after: auto; }
+
+        @media print {
+            body { background: none; padding: 0; gap: 0; }
+            .page { width: 100%; padding: 24px 28px; }
+            .watermark { margin: 0 0 24px; }
+        }
+
+        .watermark {
+            text-align: center;
+            background: var(--orange);
+            color: var(--white);
+            padding: 8px;
+            margin: 0 0 24px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 4px;
+            letter-spacing: -0.03em;
+        }
+
+        .subtitle {
+            font-size: 11px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .intro {
+            font-size: 10px;
+            color: var(--text-mid);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            padding: 14px 16px;
+            background: var(--card);
+            border-radius: 8px;
+            border-left: 4px solid var(--orange);
+        }
+
+        .intro strong { color: var(--white); }
+
+        .page-label {
+            font-size: 9px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ── Product Cards ── */
+        .product {
+            margin-bottom: 22px;
+            page-break-inside: avoid;
+        }
+
+        .product:last-child { margin-bottom: 0; }
+
+        .product-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--orange);
+        }
+
+        .product-number {
+            background: var(--orange);
+            color: var(--white);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .product-header h2 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .product-header .flyer-label {
+            margin-left: auto;
+            font-size: 8px;
+            background: var(--dark);
+            color: var(--text-light);
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            flex-shrink: 0;
+            border: 1px solid var(--border);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 16px;
+        }
+
+        .field-label {
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--orange);
+            margin-bottom: 3px;
+        }
+
+        .field-content {
+            font-size: 9.5px;
+            color: var(--text-mid);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .field-content strong {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .example-box {
+            background: var(--card);
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-top: 6px;
+            grid-column: 1 / -1;
+            border: 1px solid var(--border);
+        }
+
+        .example-box .field-label { color: var(--orange); }
+
+        .talk-track {
+            background: var(--dark);
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-top: 6px;
+            grid-column: 1 / -1;
+            border: 1px solid var(--border);
+        }
+
+        .talk-track .field-label { color: var(--text-light); }
+
+        .talk-track .field-content {
+            font-style: italic;
+            color: var(--text-mid);
+        }
+
+        /* ── Objections ── */
+        .objections {
+            margin-top: auto;
+            padding: 14px 16px;
+            background: var(--card);
+            border-radius: 8px;
+            border: 1px solid rgba(242,103,34,0.3);
+        }
+
+        .objections h2 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--orange);
+        }
+
+        .objection-item {
+            margin-bottom: 10px;
+        }
+
+        .objection-item:last-child { margin-bottom: 0; }
+
+        .objection-q {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 2px;
+        }
+
+        .objection-a {
+            font-size: 9px;
+            color: var(--text-light);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 8px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════════ PAGE 1 ═══════════════════ -->
+    <div class="page">
+
+        <div class="watermark">Internal Use Only &mdash; Not for Distribution to Clients</div>
+
+        <h1>Services Sales Cheat Sheet</h1>
+        <div class="subtitle">How to talk about everything Natred sells &mdash; what it is, who needs it, and how to explain it without sounding like a brochure.</div>
+
+        <div class="intro">
+            <strong>How to use this:</strong> Each service below is broken down the same way &mdash; what it actually is (no jargon), who buys it, what pain it solves, and exactly how to bring it up in conversation. You don't need to be technical to sell this. You need to understand the client's problem and point them to the right solution. <strong>Lead with the pain, not the product.</strong>
+        </div>
+
+        <!-- Service 1 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">01</div>
+                <h2>Complete IT Management</h2>
+                <div class="flyer-label">On flyer as "Complete IT Management"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">We become their IT department. Servers, desktops, laptops, cloud systems, networks &mdash; all monitored, patched, updated, and maintained. We handle the day-to-day so their team never has to think about IT unless they want to.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">They're either paying an internal IT person who's overwhelmed and reactive, or they've got no one and the MD is playing tech support. Either way, <strong>things break and nobody knows until it's a crisis.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Any business with 10&ndash;200 staff that doesn't have (or want) a full internal IT team.</strong> Especially businesses that have outgrown the "my nephew does our IT" phase. Professional services, medical, retail, logistics, manufacturing.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Downtime. The cost of a full-time IT hire. The stress of not knowing if their backups work. Peace of mind that proper monitoring is in place and issues get flagged before they become problems.</div>
+                </div>
+                <div class="example-box">
+                    <div class="field-label">Example Scenario</div>
+                    <div class="field-content">"A 40-person accounting firm has one junior IT guy who's in over his head. Servers aren't patched, backups haven't been tested in months, and every Monday starts with someone's Outlook not working. We take over, stabilise everything, and their team just works."</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"How's your IT being handled right now? Do you have someone in-house, or is it a bit of everyone's problem? We take that off the table completely &mdash; your team focuses on their actual jobs, and we make sure the tech just works."</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">02</div>
+                <h2>Microsoft 365 & SharePoint</h2>
+                <div class="flyer-label">On flyer as "Microsoft 365 &amp; SharePoint"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">Full Microsoft 365 setup and management &mdash; Exchange Online, Teams, OneDrive, and SharePoint. We specialise in <strong>SharePoint implementations built from scratch</strong> with proper structure, permissions, and document management from day one. Not migrations of old messes &mdash; clean builds that actually work.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">Most businesses are paying for M365 but using about 10% of it. Their SharePoint is either empty, a dumping ground, or was "set up" by someone who watched a YouTube video. <strong>They're not getting value from what they're already paying for.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Businesses already on M365 that know it could be better, or businesses moving to M365 for the first time.</strong> Document-heavy industries: legal, accounting, property, construction, healthcare &mdash; anyone drowning in files and folders.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Time searching for documents. Version control nightmares. Licence waste from unused or mis-assigned subscriptions. The cost of third-party tools that M365 already does natively.</div>
+                </div>
+                <div class="example-box">
+                    <div class="field-label">Example Scenario</div>
+                    <div class="field-content">"A property management company has files scattered across personal drives, email attachments, and a shared folder on an old server. We build them a SharePoint structure &mdash; by property, by document type, with proper permissions &mdash; and suddenly everyone can find what they need in seconds."</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"You're on Microsoft 365 already, right? How's that going for you? Most businesses we talk to are paying for it but barely using SharePoint or Teams properly. We set that up so it actually works for your team &mdash; proper structure, proper permissions, from scratch."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>&copy; 2026 Natred &middot; Avian Forge (Pty) Ltd &middot; Internal Document</span>
+            <span>Page 1 of 4</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ PAGE 2 ═══════════════════ -->
+    <div class="page">
+
+        <div class="watermark">Internal Use Only &mdash; Not for Distribution to Clients</div>
+        <div class="page-label">Services Sales Cheat Sheet &mdash; Continued</div>
+
+        <!-- Service 3 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">03</div>
+                <h2>VoIP & Teams Calling</h2>
+                <div class="flyer-label">On flyer as "VoIP &amp; Teams Calling"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">We replace their old phone system (PBX, analogue lines, or whatever Telkom setup they're clinging to) with Microsoft Teams as their actual phone system. Real phone numbers, real call routing, voicemail, auto-attendants &mdash; all inside Teams.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">Their phone system is either ancient, expensive to maintain, or some bolted-on VoIP thing that drops calls. Their team is already on Teams for chat &mdash; <strong>why are they paying for a separate phone system?</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Any business already on M365 that still has a separate phone system.</strong> Especially multi-site businesses, remote/hybrid teams, and anyone sick of paying Telkom for lines nobody answers.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Monthly line rental and PBX maintenance costs. One less system to manage. Calls work from anywhere &mdash; office, home, mobile app. No more "the phones are down" on a Monday morning.</div>
+                </div>
+                <div class="example-box">
+                    <div class="field-label">Example Scenario</div>
+                    <div class="field-content">"A law firm with 3 offices is paying R8k/month for ISDN lines and a PBX that needs rebooting every week. We move them to Teams Calling &mdash; same phone numbers, proper call queues for reception, and their lawyers can take calls from their laptops when working from home."</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"What are you using for your phone system right now? If your team's already on Teams, there's a good chance you're paying for two systems that do the same thing. We can consolidate that &mdash; same numbers, better features, lower cost."</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">04</div>
+                <h2>Network Infrastructure</h2>
+                <div class="flyer-label">On flyer as "Network Infrastructure"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">We design and install business-grade networks &mdash; WiFi, cabling, switches, firewalls, VLANs. We use UniFi gear predominantly because it's enterprise quality without the enterprise price tag, and we can manage it remotely.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">Their WiFi drops in the boardroom. The guest network doesn't exist (or is the same as the staff one). The cabling looks like spaghetti. <strong>Their network was set up by whoever was cheapest, not whoever knew what they were doing.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Any business moving offices, opening a new site, or fed up with network issues.</strong> Retail stores, restaurants, warehouses, offices, medical practices &mdash; anywhere people need reliable connectivity.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Productivity lost to "the internet is slow" complaints. Security risk from an unsegmented network. The embarrassment of WiFi dropping during a client presentation.</div>
+                </div>
+                <div class="example-box">
+                    <div class="field-label">Example Scenario</div>
+                    <div class="field-content">"A retail chain with 5 stores has consumer-grade routers from their ISP, no VLANs, and POS devices on the same network as the guest WiFi. We install UniFi at each site, segment the networks properly, and manage it all from a central dashboard."</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"How's your WiFi and network holding up? A lot of businesses we work with are running on consumer gear that was fine when they had 10 people but can't handle 40. We sort that out properly &mdash; business-grade kit, proper segmentation, managed remotely."</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">05</div>
+                <h2>Website Management & Hosting</h2>
+                <div class="flyer-label">On flyer as "Website Management &amp; Hosting"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">We manage the full backend of their web presence &mdash; hosting, DNS, SSL certificates, email routing, domain renewals, CMS updates, and security patches. If their website or email breaks at 2am, we fix it.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">Their website was built by a freelancer 3 years ago and nobody knows the login. The SSL expired and Chrome is showing a security warning. Emails are landing in spam. <strong>Nobody is looking after it.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Any business with a website they rely on but nobody maintaining it.</strong> Service businesses where the website drives leads. E-commerce. Anyone who's ever said "I think our developer has the password somewhere."</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Lost leads from a broken website. The panic when something goes down and nobody knows who to call. The risk of an outdated WordPress plugin getting hacked.</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"Who's looking after your website and email backend right now? If the answer is 'I'm not sure' or 'the guy who built it,' that's a risk. We take ownership of that &mdash; hosting, security, DNS, all of it &mdash; so you never have to think about it."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>&copy; 2026 Natred &middot; Avian Forge (Pty) Ltd &middot; Internal Document</span>
+            <span>Page 2 of 4</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ PAGE 3 ═══════════════════ -->
+    <div class="page">
+
+        <div class="watermark">Internal Use Only &mdash; Not for Distribution to Clients</div>
+        <div class="page-label">Services Sales Cheat Sheet &mdash; Continued</div>
+
+        <!-- Service 6 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">06</div>
+                <h2>Custom Software Development</h2>
+                <div class="flyer-label">On flyer as "Custom Software Development"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">When no off-the-shelf product solves their problem, we build it. Internal tools, workflow apps, system integrations, automations &mdash; built specifically around how their business actually operates. Not a bloated platform, just what they need.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">They've got a process that's held together with spreadsheets, WhatsApp messages, and manual effort. Or they're paying for a SaaS tool that does 90 things but they only need 3 &mdash; and it doesn't do those 3 properly. <strong>We build the missing piece.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Businesses with a specific workflow problem that generic software can't solve.</strong> Operations managers drowning in manual processes. Business owners who've said "I wish there was an app that just does X." There usually isn't &mdash; so we build it.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Hours of manual work on broken processes. Monthly SaaS fees for tools they're fighting against. The risk of critical business data living in someone's spreadsheet.</div>
+                </div>
+                <div class="example-box">
+                    <div class="field-label">Example Scenario</div>
+                    <div class="field-content">"A logistics company tracks driver assignments on a shared Google Sheet. Dispatch, drivers, and management all update it manually. We build a simple web app &mdash; dispatch assigns jobs, drivers update status from their phones, management sees a live dashboard. No more 'who updated the sheet last?'"</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"Is there a process in your business that's still running on spreadsheets or manual effort? Something where you've looked for software but nothing quite fits? That's exactly what we build &mdash; a tool that does what you need, nothing more."</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 7 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">07</div>
+                <h2>IT Procurement & Licensing</h2>
+                <div class="flyer-label">On flyer as "IT Procurement &amp; Licensing"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">We spec, source, and procure hardware (laptops, desktops, servers, networking gear) and manage software licensing (Microsoft, Adobe, security tools, etc). Every quote comes with a full cost breakdown &mdash; our margin is visible, not buried.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">They're buying laptops from Incredible Connection, have no idea if their licences are compliant, and their "IT guy" marks up hardware 40% and pretends it's cost price. <strong>They don't know what they're paying for or if they're getting the right stuff.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Any business that buys IT equipment and software but doesn't have procurement expertise internally.</strong> Growing businesses adding headcount. Companies with licence renewals they don't understand. Anyone who's been burned by an overpriced IT quote.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Money &mdash; because they see the actual cost. Compliance risk from unlicenced software. Time spent comparing quotes they can't evaluate. The trust issues that come from opaque IT pricing.</div>
+                </div>
+                <div class="example-box">
+                    <div class="field-label">Example Scenario</div>
+                    <div class="field-content">"A growing business needs 15 new laptops and M365 licences for new hires. Their current IT company quotes R22k per laptop with no spec sheet. We spec the right machines for their use case, show the wholesale cost, show our margin, and it comes in at R14k each. Same quality, full transparency."</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"When you buy hardware or software, do you see a full breakdown of what you're paying for? A lot of IT companies bury their margin in the hardware cost. We don't &mdash; you see the cost price, you see our fee, and you decide."</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service 8 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">08</div>
+                <h2>IT Consulting & Project Work</h2>
+                <div class="flyer-label">On flyer as "IT Consulting &amp; Project Work"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">One-off IT projects with a clear scope and timeline. Office moves, new site setups, infrastructure overhauls, system upgrades, cloud migrations. We plan it, spec it, procure it, and deliver it &mdash; end to end.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">They've got a big IT project coming up and nobody internally to run it. Or they've tried before and it went sideways because there was no proper planning. <strong>They need someone who's done this before and won't wing it.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Businesses going through change:</strong> moving offices, opening new branches, upgrading from on-prem to cloud, refreshing old infrastructure. Also businesses whose current IT provider said "we can do that" but clearly can't.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">The chaos of an unmanaged IT project. Downtime from a botched migration. The cost of doing it twice because it wasn't done right the first time.</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"Have you got any IT projects on the horizon &mdash; office move, system upgrade, new site? We handle the full project: planning, procurement, installation, and handover. You tell us the deadline, we make it happen."</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>&copy; 2026 Natred &middot; Avian Forge (Pty) Ltd &middot; Internal Document</span>
+            <span>Page 3 of 4</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════ PAGE 4 ═══════════════════ -->
+    <div class="page">
+
+        <div class="watermark">Internal Use Only &mdash; Not for Distribution to Clients</div>
+        <div class="page-label">Services Sales Cheat Sheet &mdash; Continued</div>
+
+        <!-- Service 9 -->
+        <div class="product">
+            <div class="product-header">
+                <div class="product-number">09</div>
+                <h2>Business Intelligence & Data Analytics</h2>
+                <div class="flyer-label">On flyer as "Business Intelligence &amp; Data Analytics"</div>
+            </div>
+            <div class="product-grid">
+                <div>
+                    <div class="field-label">What It Actually Is</div>
+                    <div class="field-content">We build dashboards and automated reports that pull data from their business systems &mdash; accounting software, CRMs, spreadsheets, databases &mdash; and turn it into something useful. Think Power BI, custom dashboards, or automated email reports that arrive every Monday morning.</div>
+                </div>
+                <div>
+                    <div class="field-label">What Problem It Solves</div>
+                    <div class="field-content">The MD asks "how did last month go?" and someone spends two days building a spreadsheet. Sales data lives in one system, finance in another, ops in a third. <strong>Nobody has a single view of the business.</strong></div>
+                </div>
+                <div>
+                    <div class="field-label">Who It's For</div>
+                    <div class="field-content"><strong>Business owners and execs who want to see their numbers without asking someone to pull a report.</strong> MDs, finance directors, ops managers. Especially businesses with data in multiple systems that don't talk to each other.</div>
+                </div>
+                <div>
+                    <div class="field-label">What They Save</div>
+                    <div class="field-content">Hours spent building manual reports. Decisions made on outdated or incomplete data. The salary of the person whose main job is "updating the spreadsheet."</div>
+                </div>
+                <div class="example-box">
+                    <div class="field-label">Example Scenario</div>
+                    <div class="field-content">"A group of restaurants tracks revenue in their POS, costs in Xero, and staff hours in a separate system. The owner gets a monthly P&L two weeks late. We connect all three into a dashboard that updates daily &mdash; revenue, costs, and labour per location, at a glance."</div>
+                </div>
+                <div class="talk-track">
+                    <div class="field-label">How to Say It in a Meeting</div>
+                    <div class="field-content">"How quickly can you see how your business is performing right now &mdash; not last month, right now? If the answer is 'I'd have to ask someone,' we can fix that. We build dashboards that pull from your actual systems and update automatically."</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- General Objection Handling -->
+        <div class="objections">
+            <h2>Common Objections &amp; How to Handle Them</h2>
+            <div class="objection-item">
+                <div class="objection-q">"We already have an IT guy / company."</div>
+                <div class="objection-a">That's great &mdash; we're not asking you to fire anyone. But if you're talking to us, something isn't working. We're happy to do a free assessment and give you an honest opinion. If your current setup is solid, we'll tell you.</div>
+            </div>
+            <div class="objection-item">
+                <div class="objection-q">"We're too small for managed IT."</div>
+                <div class="objection-a">You're not too small to have problems. If you've got 10+ staff and your business runs on technology, you need someone watching it. We scale to your size &mdash; you don't pay for what you don't need.</div>
+            </div>
+            <div class="objection-item">
+                <div class="objection-q">"How much does this cost?"</div>
+                <div class="objection-a">It depends on what you need &mdash; that's why we start with a free assessment. We'll look at your setup, understand your pain points, and give you a clear proposal with transparent pricing. No surprises, no hidden fees. That's literally our thing.</div>
+            </div>
+            <div class="objection-item">
+                <div class="objection-q">"We had a bad experience with our last IT provider."</div>
+                <div class="objection-a">We hear that constantly. That's exactly why transparency is our whole positioning. Every invoice is itemised. Every decision is explained. You'll always know what we're doing and why. And if you're not happy, you can walk &mdash; we don't lock anyone into contracts they can't exit.</div>
+            </div>
+            <div class="objection-item">
+                <div class="objection-q">"Can you just quote on [one specific thing]?"</div>
+                <div class="objection-a">Absolutely. We don't force you into a managed service deal. Need a network sorted? SharePoint built? Office move handled? We do project work too. Start with one thing, see how we operate, and go from there.</div>
+            </div>
+            <div class="objection-item">
+                <div class="objection-q">"What makes you different from every other IT company?"</div>
+                <div class="objection-a">Transparency. Every other IT company says they're good at IT &mdash; so do we. The difference is you'll actually understand your invoices, you'll know what you're paying for, and we'll be honest when something is outside our expertise instead of winging it.</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>&copy; 2026 Natred &middot; Avian Forge (Pty) Ltd &middot; Internal Document</span>
+            <span>Page 4 of 4 &middot; Corresponds with: Natred-Promo-Light.html &amp; Natred-Promo-Dark.html flyers</span>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,455 @@
+---
+// Contact Modal - Client-side JS island for accessible modal with mailto functionality
+---
+
+<div class="contact-modal-overlay" id="contact-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+  <div class="contact-modal">
+    <button class="modal-close" aria-label="Close contact form" data-close-modal>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="modal-header">
+      <h2 id="contact-modal-title">Get In Touch</h2>
+      <p class="modal-subtitle">Tell us about your IT needs and we'll get back to you within 24 hours.</p>
+    </div>
+
+    <form class="contact-form" id="contact-form">
+      <div class="form-group">
+        <label for="contact-name">Name <span class="required">*</span></label>
+        <input type="text" id="contact-name" name="name" required autocomplete="name" placeholder="Your name">
+      </div>
+
+      <div class="form-group">
+        <label for="contact-email">Email <span class="required">*</span></label>
+        <input type="email" id="contact-email" name="email" required autocomplete="email" placeholder="your@email.com">
+      </div>
+
+      <div class="form-group">
+        <label for="contact-company">Company</label>
+        <input type="text" id="contact-company" name="company" autocomplete="organization" placeholder="Your company (optional)">
+      </div>
+
+      <div class="form-group">
+        <label for="contact-message">Message <span class="required">*</span></label>
+        <textarea id="contact-message" name="message" rows="4" required placeholder="How can we help?"></textarea>
+      </div>
+
+      <div class="form-group turnstile-container">
+        <div class="cf-turnstile" id="modal-turnstile" data-sitekey="0x4AAAAAACXuVntH3ohsUMHG" data-theme="dark" data-callback="onModalTurnstileSuccess" data-expired-callback="onModalTurnstileExpired"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg submit-btn" id="modal-submit-btn" disabled>
+        <span class="btn-text">Send Message</span>
+        <span class="btn-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </span>
+      </button>
+      <div class="form-feedback" id="modal-form-feedback" hidden>
+        <svg class="feedback-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span>Opening your email client...</span>
+      </div>
+    </form>
+
+    <p class="modal-footer-text">
+      Or email us directly at <a href="mailto:service@natred.com">service@natred.com</a>
+    </p>
+  </div>
+</div>
+
+<style>
+  .contact-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+  }
+
+  .contact-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .contact-modal {
+    background: var(--charcoal);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-lg);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 40px;
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s ease;
+  }
+
+  .contact-modal-overlay.open .contact-modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--light-gray);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+  }
+
+  .modal-close:hover {
+    color: var(--white);
+    background: var(--dark-gray);
+  }
+
+  .modal-header {
+    margin-bottom: 30px;
+  }
+
+  .modal-header h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .modal-subtitle {
+    color: var(--light-gray);
+    font-size: 15px;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .required {
+    color: var(--natred-orange);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: var(--dark-gray);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color var(--transition-fast);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--light-gray);
+    opacity: 0.6;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--natred-orange);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .turnstile-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .form-feedback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: var(--radius-md);
+    color: #4CAF50;
+    font-weight: 500;
+  }
+
+  .form-feedback[hidden] {
+    display: none;
+  }
+
+  .feedback-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #4CAF50;
+  }
+
+  .btn-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .modal-footer-text {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--light-gray);
+    font-size: 14px;
+  }
+
+  .modal-footer-text a {
+    color: var(--natred-orange);
+    transition: color var(--transition-fast);
+  }
+
+  .modal-footer-text a:hover {
+    color: var(--white);
+  }
+
+  @media (max-width: 768px) {
+    .contact-modal {
+      padding: 30px 20px;
+    }
+
+    .modal-header h2 {
+      font-size: 24px;
+    }
+  }
+</style>
+
+<script>
+  // Modal Turnstile state
+  let modalTurnstileVerified = false;
+  const modalSubmitBtn = document.getElementById('modal-submit-btn') as HTMLButtonElement;
+
+  (window as any).onModalTurnstileSuccess = function(token: string) {
+    modalTurnstileVerified = true;
+    if (modalSubmitBtn) modalSubmitBtn.disabled = false;
+  };
+
+  (window as any).onModalTurnstileExpired = function() {
+    modalTurnstileVerified = false;
+    if (modalSubmitBtn) modalSubmitBtn.disabled = true;
+  };
+
+  // Contact Modal Controller
+  class ContactModal {
+    private overlay: HTMLElement | null;
+    private modal: HTMLElement | null;
+    private form: HTMLFormElement | null;
+    private focusableElements: HTMLElement[] = [];
+    private firstFocusable: HTMLElement | null = null;
+    private lastFocusable: HTMLElement | null = null;
+    private previousActiveElement: HTMLElement | null = null;
+
+    constructor() {
+      this.overlay = document.getElementById('contact-modal');
+      this.modal = this.overlay?.querySelector('.contact-modal') || null;
+      this.form = document.getElementById('contact-form') as HTMLFormElement;
+
+      this.init();
+    }
+
+    private init() {
+      // Open modal triggers
+      document.querySelectorAll('[data-open-contact-modal]').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.open();
+        });
+      });
+
+      // Close button
+      this.overlay?.querySelectorAll('[data-close-modal]').forEach(btn => {
+        btn.addEventListener('click', () => this.close());
+      });
+
+      // Close on overlay click
+      this.overlay?.addEventListener('click', (e) => {
+        if (e.target === this.overlay) {
+          this.close();
+        }
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isOpen()) {
+          this.close();
+        }
+      });
+
+      // Form submission
+      this.form?.addEventListener('submit', (e) => this.handleSubmit(e));
+
+      // Get focusable elements
+      this.updateFocusableElements();
+    }
+
+    private updateFocusableElements() {
+      if (!this.modal) return;
+
+      const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      this.focusableElements = Array.from(this.modal.querySelectorAll(focusableSelectors)) as HTMLElement[];
+      this.firstFocusable = this.focusableElements[0] || null;
+      this.lastFocusable = this.focusableElements[this.focusableElements.length - 1] || null;
+    }
+
+    private trapFocus(e: KeyboardEvent) {
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === this.firstFocusable) {
+          e.preventDefault();
+          this.lastFocusable?.focus();
+        }
+      } else {
+        if (document.activeElement === this.lastFocusable) {
+          e.preventDefault();
+          this.firstFocusable?.focus();
+        }
+      }
+    }
+
+    public open() {
+      if (!this.overlay) return;
+
+      this.previousActiveElement = document.activeElement as HTMLElement;
+      this.overlay.classList.add('open');
+      this.overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      // Focus first input
+      setTimeout(() => {
+        const firstInput = this.form?.querySelector('input') as HTMLElement;
+        firstInput?.focus();
+      }, 100);
+
+      // Add focus trap
+      document.addEventListener('keydown', this.trapFocus.bind(this));
+    }
+
+    public close() {
+      if (!this.overlay) return;
+
+      this.overlay.classList.remove('open');
+      this.overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+
+      // Return focus to previous element
+      this.previousActiveElement?.focus();
+
+      // Remove focus trap
+      document.removeEventListener('keydown', this.trapFocus.bind(this));
+
+      // Reset form
+      this.form?.reset();
+
+      // Hide feedback
+      const feedback = document.getElementById('modal-form-feedback');
+      if (feedback) feedback.hidden = true;
+
+      // Reset Turnstile
+      modalTurnstileVerified = false;
+      if (modalSubmitBtn) modalSubmitBtn.disabled = true;
+      const turnstileWidget = document.getElementById('modal-turnstile');
+      if (turnstileWidget && (window as any).turnstile) {
+        (window as any).turnstile.reset(turnstileWidget);
+      }
+    }
+
+    public isOpen(): boolean {
+      return this.overlay?.classList.contains('open') || false;
+    }
+
+    private handleSubmit(e: Event) {
+      e.preventDefault();
+
+      if (!this.form) return;
+
+      if (!modalTurnstileVerified) {
+        alert('Please complete the verification challenge.');
+        return;
+      }
+
+      const formData = new FormData(this.form);
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const company = formData.get('company') as string;
+      const message = formData.get('message') as string;
+
+      // Build mailto URL
+      const subject = encodeURIComponent(`IT Support Enquiry from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        (company ? `Company: ${company}\n` : '') +
+        `\nMessage:\n${message}`
+      );
+
+      const mailtoUrl = `mailto:service@natred.com?subject=${subject}&body=${body}`;
+
+      // Show feedback
+      const feedback = document.getElementById('modal-form-feedback');
+      if (feedback) feedback.hidden = false;
+
+      // Open mail client
+      window.location.href = mailtoUrl;
+
+      // Close modal after a short delay
+      setTimeout(() => this.close(), 2000);
+    }
+  }
+
+  // Initialize modal when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    new ContactModal();
+  });
+</script>

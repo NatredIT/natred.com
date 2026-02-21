@@ -1,0 +1,208 @@
+---
+const currentYear = new Date().getFullYear();
+
+const serviceLinks = [
+  { href: '/#services', label: 'IT Support' },
+  { href: '/#services', label: 'Microsoft 365' },
+  { href: '/#services', label: 'VoIP & Teams Calling' },
+  { href: '/#services', label: 'Network Infrastructure' },
+  { href: '/#services', label: 'Website Management' },
+  { href: '/#services', label: 'Custom Development' },
+  { href: '/#services', label: 'Business Intelligence' },
+];
+
+const companyLinks = [
+  { href: '/contact', label: 'Contact' },
+  { href: '/about', label: 'About Us' },
+  { href: '/#ai', label: 'AI Integration' },
+  { href: '/partnerships', label: 'Partnerships' },
+  { href: '/careers', label: 'Careers' },
+  { href: '/referral-program', label: 'Referral Program' },
+];
+
+const legalLinks = [
+  { href: '/privacy-policy', label: 'Privacy Policy' },
+  { href: '/terms-of-service', label: 'Terms of Service' },
+  { href: '/acceptable-use-policy', label: 'Acceptable Use Policy' },
+  { href: '/ethical-ai-policy', label: 'Ethical AI Policy' },
+];
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-company">
+        <p class="company-name">Natred</p>
+        <p class="legal-entity">Avian Forge (Pty) Ltd</p>
+        <p class="company-reg">Reg: 2024/212590/07</p>
+        <p class="company-tagline">Honest IT Services & Business Solutions</p>
+        <p class="company-location">Johannesburg, South Africa</p>
+        <a href="mailto:service@natred.com" class="footer-email">service@natred.com</a>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-column">
+          <h4>Services</h4>
+          <ul>
+            {serviceLinks.map(link => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Company</h4>
+          <ul>
+            {companyLinks.map(link => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            {legalLinks.map(link => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">&copy; {currentYear} Natred. An Honest IT Company.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 50px 0 30px;
+    background: var(--charcoal);
+    color: var(--light-gray);
+    border-top: 1px solid var(--dark-gray);
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .footer-company {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .company-name {
+    color: var(--white);
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .legal-entity {
+    color: var(--light-gray);
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+
+  .company-reg {
+    font-size: 12px;
+    color: var(--light-gray);
+    opacity: 0.7;
+    margin-bottom: 15px;
+  }
+
+  .company-tagline {
+    margin-bottom: 4px;
+  }
+
+  .company-location {
+    margin-bottom: 15px;
+  }
+
+  .footer-email {
+    color: var(--natred-orange);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-email:hover {
+    color: var(--white);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .footer-column h4 {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-column ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-column ul li a {
+    color: var(--light-gray);
+    font-size: 15px;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-column ul li a:hover {
+    color: var(--natred-orange);
+  }
+
+  .footer-bottom {
+    padding-top: 30px;
+    border-top: 1px solid var(--dark-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .address {
+    font-size: 13px;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .footer-company {
+      min-width: unset;
+    }
+
+    .footer-content {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
