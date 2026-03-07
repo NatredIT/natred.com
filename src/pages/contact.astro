@@ -59,7 +59,7 @@ import HeroSection from '../components/HeroSection.astro';
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
-              <span>Opening your email client...</span>
+              <span>Message sent! We'll be in touch within 24 hours.</span>
             </div>
           </form>
         </div>
@@ -310,57 +310,62 @@ import HeroSection from '../components/HeroSection.astro';
 </style>
 
 <script>
-  // Turnstile callbacks
-  let turnstileVerified = false;
+  let turnstileToken = '';
   const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement;
 
   (window as any).onTurnstileSuccess = function(token: string) {
-    turnstileVerified = true;
+    turnstileToken = token;
     if (submitBtn) submitBtn.disabled = false;
   };
 
   (window as any).onTurnstileExpired = function() {
-    turnstileVerified = false;
+    turnstileToken = '';
     if (submitBtn) submitBtn.disabled = true;
   };
 
-  // Contact page form handler
   const form = document.getElementById('contact-page-form') as HTMLFormElement;
+  const feedback = document.getElementById('form-feedback') as HTMLElement;
+  const feedbackText = feedback?.querySelector('span');
 
-  form?.addEventListener('submit', (e) => {
+  form?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if (!turnstileVerified) {
+    if (!turnstileToken) {
       alert('Please complete the verification challenge.');
       return;
     }
 
+    if (submitBtn) submitBtn.disabled = true;
+
     const formData = new FormData(form);
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const company = formData.get('company') as string;
-    const phone = formData.get('phone') as string;
-    const message = formData.get('message') as string;
 
-    const subject = encodeURIComponent(`IT Support Enquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
-      (company ? `Company: ${company}\n` : '') +
-      (phone ? `Phone: ${phone}\n` : '') +
-      `\nMessage:\n${message}`
-    );
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          company: formData.get('company'),
+          phone: formData.get('phone'),
+          message: formData.get('message'),
+          turnstileToken,
+        }),
+      });
 
-    // Show feedback
-    const feedback = document.getElementById('form-feedback');
-    if (feedback) feedback.hidden = false;
-
-    // Open email client
-    window.location.href = `mailto:service@natred.com?subject=${subject}&body=${body}`;
-
-    // Hide feedback after delay
-    setTimeout(() => {
-      if (feedback) feedback.hidden = true;
-    }, 5000);
+      if (res.ok) {
+        if (feedbackText) feedbackText.textContent = "Message sent! We'll be in touch within 24 hours.";
+        if (feedback) feedback.hidden = false;
+        form.reset();
+        turnstileToken = '';
+      } else {
+        const data = await res.json();
+        alert(data.error || 'Something went wrong. Please try again.');
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    } catch {
+      alert('Something went wrong. Please try again.');
+      if (submitBtn) submitBtn.disabled = false;
+    }
   });
 </script>

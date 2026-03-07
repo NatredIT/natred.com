@@ -2,8 +2,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://NatredIT.github.io',
-  base: '/natred.com',
+  site: 'https://natred.com',
   build: {
     assets: 'assets'
   },
